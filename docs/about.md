@@ -1,6 +1,6 @@
 # About
 
-Zero2Root is built and maintained by **Vinod Kumar Bontha**, a Security Analyst and penetration tester with hands-on experience across internal/external networks, web applications, source code, and cloud/infrastructure configurations.
+Zero2Root is built and maintained by **Vinod Kumar Bontha**, a Security Analyst, Penetration Tester, Security Researcher, and Bug Bounty Hunter with hands-on experience across internal/external networks, web applications, source code, and cloud/infrastructure configurations.
 
 ## Background
 

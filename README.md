@@ -69,7 +69,7 @@ Zero2Root is open source and community-driven. If you want to add a new tool, fi
 
 ## 👤 Author
  
-Zero2Root is created and maintained by **Vinod Kumar Bontha**, a Security Analyst and penetration tester.
+Zero2Root is created and maintained by **Vinod Kumar Bontha**, a Security Analyst, Penetration Tester, Security Researcher, and Bug Bounty Hunter.
  
 - 🎓 **Certifications:** CEH (Master) · CRTA · CNSP
 - 🏆 **Bug Bounty & Disclosures:** 
