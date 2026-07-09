@@ -1,0 +1,10 @@
+[build]
+  # Install dependencies, build the mkdocs site, and run our custom python script to clean up banners
+  command = "pip install -r requirements.txt && mkdocs build && python remove_duplicate_banner.py"
+  
+  # This is the directory Netlify will serve to the public
+  publish = "site"
+
+[build.environment]
+  # Specify python version
+  PYTHON_VERSION = "3.9"
