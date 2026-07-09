@@ -72,7 +72,7 @@ Zero2Root is open source and community-driven. If you want to add a new tool, fi
 Zero2Root is created and maintained by **Vinod Kumar Bontha**, a Security Analyst and penetration tester.
  
 - 🎓 Certifications: CEH (Master) · CRTA · CNSP
-- 🏆 Recognitions: ClearTax Hall of Fame (#5 among 18,650+ researchers), Max Healthcare Responsible Disclosure
+- 🏆 Recognitions: ClearTax Hall of Fame (P2 Bounty Awardee), Max Healthcare Responsible Disclosure (P1)
 - 💼 LinkedIn: [linkedin.com/in/vinodkr000](https://linkedin.com/in/vinodkr000)
 - 💻 GitHub: [@Cybertechhacks](https://github.com/Cybertechhacks)
  

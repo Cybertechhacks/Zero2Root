@@ -5,8 +5,8 @@ Zero2Root is built and maintained by **Vinod Kumar Bontha**, a Security Analyst 
 ## Background
 
 - CEH (Master), CRTA, CNSP certified
-- ClearTax Hall of Fame — ranked #5 among 18,650+ researchers for a Critical (P1) disclosure
-- Max Healthcare — Certificate of Appreciation from the CISO & DPO for a Critical (P1) disclosure
+- **ClearTax:** Inducted into the Hall of Fame and awarded a financial bounty for the responsible disclosure of a High (P2) vulnerability.
+- **Max Healthcare:** Received a Certificate of Appreciation from the CISO & DPO for securing a Critical (P1) infrastructure flaw.
 - Published researcher: *"The Power of AI and Machine Learning in Cyber security: Innovations and Challenges"* — IJRAR, Oct 2024
 
 ## Why Zero2Root
