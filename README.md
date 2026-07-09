@@ -1,144 +1,72 @@
-# PentestVault 🔐
+# Zero2Root 🛡️
 
-**The deepest free cybersecurity interview preparation resource — from absolute beginner to senior pentester.**
+> Elevate your cybersecurity career — from fundamentals to mastery.
 
-No surface-level bullet dumps. No vague hints. Every concept explained with the depth you need to not just pass interviews, but actually understand what you're talking about.
+Zero2Root (formerly PentestVault) is a comprehensive, open-source, and free-forever learning platform designed to guide individuals from absolute beginners (Level 0) to Lead Security Architects (Level 4). 
 
----
+Built with a focus on practical application, Zero2Root provides structured learning paths, tool references, and interview preparation for modern cybersecurity professionals.
 
-## Why This Exists
+<br>
+<p align="center">
+  <img src="docs/assets/logo.png" width="300" alt="Zero2Root Logo">
+</p>
+<br>
 
-Every existing "cybersecurity interview guide" on GitHub falls into one of three traps:
+## 🚀 Features
 
-1. **Q&A dumps with no answers** — you're left to Google everything anyway
-2. **SOC/blue team focused** — almost nothing for pentesters
-3. **No level structure** — a fresher and a senior are reading the same content
+* **Structured Learning Paths**: 5 distinct levels of progression (Foundations ➔ Junior ➔ Mid-Level ➔ Senior ➔ Lead/Architect).
+* **Interview Q&A Modules**: Dedicated interview preparation sections tailored to each career level.
+* **Tools Reference**: Comprehensive guides on Recon, Scanning, Web App, Network, and Mobile pentesting tools.
+* **Premium UI/UX**: Built with Material for MkDocs, featuring a responsive, custom glassmorphic dark-mode design.
+* **Readability First**: Deep-nested navigation hierarchy and optimized Table of Contents for seamless studying.
 
-PentestVault is built differently:
-- **5 levels** from absolute beginner to lead/architect
-- **Full model answers** with three-layer format (concept → what's being tested → how to say it)
-- **Offensive-first** — built by pentesters, for pentesters
-- **Domain coverage** that matches real job descriptions: IVA, IPT, EVA, EPT, ASV, Web, API, Mobile, Source Code, Config, Segmentation
-- **India-aware** — covers CERT-In, VAPT terminology, local compliance landscape
+## 🛠️ Tech Stack
 
----
+* **Static Site Generator**: [MkDocs](https://www.mkdocs.org/)
+* **Theme**: [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/)
+* **Custom Styling**: Vanilla CSS (`docs/assets/stylesheets/extra.css`)
+* **Deployment**: Netlify / GitHub Pages
 
-## Three-Layer Answer Format
+## 💻 Local Development
 
-Every interview Q&A in this guide uses a three-layer format that no other resource uses:
-
-```
-Q: [Question]
-
-[Concept Answer]
-The technical definition and mechanics — what you need to understand.
-
-[What the Interviewer Is Testing]
-What they actually want to see. What follow-up question is coming.
-Why they asked this specific question.
-
-[Model Answer to Give]
-Exactly how to frame your answer in the interview — with the right
-depth, the right terminology, and awareness of what comes next.
-```
-
----
-
-## Content Map
-
-| Level | Target | Key Domains |
-|-------|--------|-------------|
-| Level 0 — Foundations | Absolute beginner | Networking, OS, Core Security Concepts, Pentesting Intro |
-| Level 1 — Junior | 0–1 year | Recon, Scanning, OWASP Top 10, Basic Exploitation, Reporting |
-| Level 2 — Mid-Level | 1–3 years | Web Advanced, API, Android, AD, Infra, Source Code, Config, Segmentation |
-| Level 3 — Senior | 3–5 years | AD Advanced, Red Team, Cloud, iOS, Exploit Dev, Engagement Mgmt |
-| Level 4 — Lead/Architect | 5+ years | Program Design, Threat Modeling, GRC, Leadership, BD |
-
----
-
-## Local Setup
+Want to run Zero2Root on your local machine or contribute to the project? Follow these steps:
 
 ### Prerequisites
-- Python 3.8+
-- pip
+Make sure you have Python installed on your system.
 
-### Install
-
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/pentestvault.git
-cd pentestvault
-pip install mkdocs-material
+git clone https://github.com/Cybertechhacks/Zero2Root.git
+cd Zero2Root
 ```
 
-### Run locally
-
+### 2. Install Dependencies
 ```bash
-mkdocs serve
+pip install -r requirements.txt
 ```
 
-Open `http://127.0.0.1:8000` in your browser.
-
-### Build static site
-
+### 3. Start the Development Server
 ```bash
-mkdocs build
+python -m mkdocs serve
+```
+The site will now be available at `http://127.0.0.1:8000`. Any changes you make to the markdown files in the `docs/` folder will automatically reload in your browser!
+
+### 4. Build for Production
+To generate the static HTML files (output to the `site/` directory):
+```bash
+python -m mkdocs build
+python remove_duplicate_banner.py
 ```
 
-Output goes to `site/` — ready to deploy anywhere.
+## 🤝 Contributing
 
-### Deploy to GitHub Pages
+Zero2Root is open source and community-driven. If you want to add a new tool, fix a typo, or expand a tutorial:
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/AmazingContent`).
+3. Commit your changes (`git commit -m 'Add some AmazingContent'`).
+4. Push to the branch (`git push origin feature/AmazingContent`).
+5. Open a Pull Request.
 
-```bash
-mkdocs gh-deploy
-```
+## 📄 License
 
-This pushes the built site to your repo's `gh-pages` branch automatically.
-
----
-
-## Hosting Options
-
-| Platform | Cost | Steps |
-|----------|------|-------|
-| GitHub Pages | Free | `mkdocs gh-deploy` — one command |
-| Cloudflare Pages | Free | Connect repo, set build command `mkdocs build`, output dir `site` |
-| Netlify | Free | Same as Cloudflare — auto-deploys on every push |
-| Custom domain | ~₹700/yr | Add `CNAME` file to `docs/`, configure DNS |
-
----
-
-## Contributing
-
-All contributions welcome. If you're a pentester who's been through interviews and spotted a gap — open a PR.
-
-**Content standards:**
-- No surface-level content. Every topic must be explained to the depth that lets someone answer follow-up questions.
-- Three-layer Q&A format for every interview question.
-- Practical, not theoretical — include tool names, commands, real scenarios.
-- Keep it interview-relevant — not every obscure technique belongs here.
-
-**How to contribute:**
-1. Fork the repo
-2. Create a branch: `git checkout -b add/level2-ssrf-deep-dive`
-3. Write your content in Markdown
-4. Open a PR with a brief description
-
----
-
-## License
-
-MIT License — free to use, share, and contribute.
-
----
-
-## Roadmap
-
-- [x] Level 0–4 content (v1)
-- [x] Tools reference
-- [x] Certifications roadmap
-- [x] Behavioral interview guide
-- [x] Resume guide
-- [ ] Interactive quiz per module
-- [ ] AI mock interview simulator
-- [ ] Community-contributed finding stories
-- [ ] Hindi language translation
+Zero2Root © 2026 — Open Source, Free Forever.
