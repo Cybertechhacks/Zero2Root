@@ -1,0 +1,149 @@
+site_name: Zero2Root
+site_description: Elevate your cybersecurity career — from fundamentals to mastery.
+site_author: Zero2Root Contributors
+site_url: https://zero2root.github.io
+repo_url: https://github.com/Cybertechhacks/Zero2Root
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.sections
+    - navigation.path
+    - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Cybertechhacks/Zero2Root
+
+copyright: >
+  Zero2Root &copy; 2026 — Open Source, Free Forever.
+
+nav:
+  - Home: index.md
+
+  - Level 0 — Foundations:
+    - Overview: level-0/index.md
+    - Networking Fundamentals: level-0/01-networking.md
+    - OS Fundamentals: level-0/02-os-fundamentals.md
+    - Core Security Concepts: level-0/03-security-concepts.md
+    - Introduction to Pentesting: level-0/04-intro-pentesting.md
+    - Interview Q&A — Fresher: level-0/05-interview-qa.md
+
+  - Level 1 — Junior Pentester:
+    - Overview: level-1/index.md
+    - Reconnaissance: level-1/01-reconnaissance.md
+    - Scanning & Enumeration: level-1/02-scanning-enumeration.md
+    - Vulnerability Assessment: level-1/03-vulnerability-assessment.md
+    - OWASP Top 10: level-1/04-owasp-top10.md
+    - Basic Exploitation: level-1/05-basic-exploitation.md
+    - Report Writing: level-1/06-report-writing.md
+    - Interview Q&A — Junior: level-1/07-interview-qa.md
+
+  - Level 2 — Mid-Level Pentester:
+    - Overview: level-2/index.md
+    - Web Application — Advanced: level-2/01-web-advanced.md
+    - API Security: level-2/02-api-security.md
+    - Mobile Security — Android: level-2/03-mobile-android.md
+    - Infrastructure Pentesting: level-2/04-infrastructure.md
+    - Active Directory: level-2/05-active-directory.md
+    - Source Code Review: level-2/06-source-code-review.md
+    - Configuration Review: level-2/07-config-review.md
+    - Segmentation Testing: level-2/08-segmentation-testing.md
+    - Interview Q&A — Mid-Level: level-2/09-interview-qa.md
+
+  - Level 3 — Senior Pentester:
+    - Overview: level-3/index.md
+    - Active Directory — Advanced: level-3/01-ad-advanced.md
+    - Red Team Concepts: level-3/02-red-team.md
+    - Cloud Security: level-3/03-cloud-security.md
+    - Mobile Security — iOS: level-3/04-mobile-ios.md
+    - Exploit Development: level-3/05-exploit-dev.md
+    - Engagement Management: level-3/06-engagement-management.md
+    - Interview Q&A — Senior: level-3/07-interview-qa.md
+
+  - Level 4 — Lead / Architect:
+    - Overview: level-4/index.md
+    - Red Team Program Design: level-4/01-red-team-program.md
+    - Threat Modeling: level-4/02-threat-modeling.md
+    - GRC & Compliance: level-4/03-grc-compliance.md
+    - Leadership & Team Management: level-4/04-leadership.md
+    - Business Development: level-4/05-business-development.md
+    - Interview Q&A — Lead: level-4/06-interview-qa.md
+
+  - Tools Reference:
+    - Overview: tools/index.md
+    - Recon Tools: tools/01-recon-tools.md
+    - Scanning Tools: tools/02-scanning-tools.md
+    - Web App Tools: tools/03-web-tools.md
+    - Network & Infra Tools: tools/04-network-tools.md
+    - Mobile Tools: tools/05-mobile-tools.md
+
+  - Resources:
+    - Overview: resources/index.md
+    - Certifications Roadmap: certifications.md
+    - Behavioral Interview: behavioral.md
+    - Resume & Portfolio Guide: resume-guide.md

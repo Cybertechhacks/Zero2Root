@@ -1,0 +1,1033 @@
+/* ── Normalize root font-size ───────────────────────────── */
+/* MkDocs Material inflates to 125–150% — force 16px baseline */
+html {
+  font-size: 100% !important;
+}
+
+/* ── Full-width layout — remove side gaps ──────────────────── */
+/* MkDocs Material defaults to max-width: 61rem (976px) on .md-grid
+   which creates large empty margins on wide screens. Override to fill. */
+.md-grid {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.md-header__inner,
+.md-tabs__inner {
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* Keep content area comfortable — don't let text stretch too wide */
+.md-content__inner {
+  max-width: 56rem;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
+/* Footer full width */
+.md-footer-meta__inner {
+  max-width: 100% !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* ── Design Tokens ────────────────────────────────────────── */
+:root {
+  --pv-radius-sm: 8px;
+  --pv-radius-md: 12px;
+  --pv-radius-lg: 16px;
+
+  --pv-space-xs: 4px;
+  --pv-space-sm: 8px;
+  --pv-space-md: 16px;
+  --pv-space-lg: 24px;
+  --pv-space-xl: 32px;
+  --pv-space-2xl: 48px;
+
+  --pv-transition-fast: 150ms;
+  --pv-transition-normal: 200ms;
+
+  --pv-toc-active: var(--md-accent-fg-color);
+
+  --pv-header-bg: var(--md-default-bg-color);
+  --pv-header-border: var(--md-default-fg-color--lightest);
+
+  --pv-fs-h1: 31px;
+  --pv-fs-h2: 21px;
+  --pv-fs-h3: 17px;
+  --pv-fs-body: 16px;
+  --pv-fs-small: 13px;
+  --pv-fs-xs: 11px;
+}
+
+/* ── Typography Scale (absolute px, referencing 16px root) ── */
+.md-typeset h1 {
+  font-weight: 800 !important;
+  font-size: 3.5rem !important;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--pv-space-xl);
+  background: linear-gradient(135deg, #FFF 0%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-md-color-scheme="default"] .md-typeset h1 {
+  background: linear-gradient(135deg, #0F172A 0%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero H1 — override MkDocs scoping, must be outside .md-typeset */
+.pv-hero-content h1 {
+  font-size: 3.8rem !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+  margin-bottom: var(--pv-space-lg) !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #A5B4FC 50%, #67E8F9 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+[data-md-color-scheme="default"] .pv-hero-content h1 {
+  background: linear-gradient(135deg, #0F172A 0%, #3730A3 50%, #0891B2 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+  font-size: var(--pv-fs-h2) !important;
+  line-height: 1.3;
+  margin-top: var(--pv-space-2xl);
+  margin-bottom: var(--pv-space-lg);
+  border-bottom: none;
+  padding-bottom: 0;
+  /* Strong visual separation from body text */
+  color: var(--md-default-fg-color);
+  letter-spacing: -0.02em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  color: #F1F5F9; /* near-white, clearly distinct from #94A3B8 body secondary text */
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+  font-size: var(--pv-fs-h3) !important;
+  line-height: 1.35;
+  margin-top: var(--pv-space-xl);
+  margin-bottom: var(--pv-space-md);
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h3 {
+  color: #CBD5E1; /* clearly lighter than body secondary text */
+}
+
+.md-typeset {
+  font-size: var(--pv-fs-body);
+  line-height: 1.8;  /* increased from 1.7 for dense technical content */
+}
+
+/* Body text in dark mode — lifted to #CBD5E1, significantly more readable than dim gray */
+[data-md-color-scheme="slate"] .md-typeset {
+  color: #CBD5E1;
+}
+
+[data-md-color-scheme="slate"] .md-typeset p,
+[data-md-color-scheme="slate"] .md-typeset li,
+[data-md-color-scheme="slate"] .md-typeset dd {
+  color: #CBD5E1;
+}
+
+.md-typeset .md-content__button {
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* ── Header — Top Bar ─────────────────────────────────────── */
+.md-header {
+  background-color: var(--pv-header-bg) !important;
+  color: var(--md-default-fg-color);
+  box-shadow: none;
+  border-bottom: 1px solid var(--pv-header-border);
+}
+
+.md-header[data-md-component="header"] {
+  background-color: var(--pv-header-bg) !important;
+}
+
+.md-header__inner {
+  padding: 0 var(--pv-space-md);
+}
+
+.md-header__title {
+  color: var(--md-default-fg-color);
+}
+
+.md-header__topic {
+  color: var(--md-default-fg-color);
+}
+
+.md-header__button {
+  color: var(--md-default-fg-color);
+}
+
+.md-search__overlay {
+  background-color: var(--md-default-bg-color);
+}
+
+/* Search input */
+.md-search__input {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* ── Sidebar — Nav ────────────────────────────────────────── */
+/* Global width removed to prevent mobile drawer overlap. Defined in desktop media query below. */
+
+/* Custom minimal scrollbar for sidebar */
+.md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 4px;
+}
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+.md-sidebar__scrollwrap:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.15);
+}
+
+/* Section headers (Level 0-4, Tools, Resources) */
+.md-nav__item--nested > .md-nav__link,
+.md-sidebar--primary .md-nav__title {
+  font-weight: 700; /* Increased to 700 to make it bolder */
+  font-size: var(--pv-fs-small);
+  color: var(--md-default-fg-color);
+  padding: var(--pv-space-sm) var(--pv-space-md);
+  padding-left: 0px !important; /* Pulled completely flush left */
+  border-radius: var(--pv-radius-sm);
+  transition: background var(--pv-transition-fast) ease;
+}
+
+.md-nav__item--nested > .md-nav__link:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+
+/* Active section header */
+.md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link {
+  color: var(--md-accent-fg-color);
+}
+
+/* Sidebar child items */
+.md-nav__item .md-nav__link {
+  font-size: var(--pv-fs-small);
+  padding: 6px var(--pv-space-md);
+  border-radius: var(--pv-radius-sm);
+  transition: background var(--pv-transition-fast) ease;
+}
+
+.md-nav__item .md-nav__link:hover {
+  background: var(--md-default-fg-color--lightest);
+}
+
+/* Active sidebar page — subtle indicator */
+.md-nav__item .md-nav__link--active,
+.md-nav__item--active > .md-nav__link {
+  background: rgba(103, 232, 249, 0.05); /* very subtle */
+  color: var(--md-accent-fg-color);
+  font-weight: 500; /* reduced from 600 */
+  border-left: 2px solid var(--md-accent-fg-color); /* reduced from 3px */
+  border-radius: 0 var(--pv-radius-sm) var(--pv-radius-sm) 0;
+  padding-left: calc(var(--pv-space-md) - 2px);
+}
+
+/* Sidebar nested indentation (Primary Sidebar Only) */
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link {
+  padding-left: 32px !important; /* Pushed significantly right for deep hierarchy distinction */
+}
+
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__item .md-nav__link {
+  padding-left: 48px !important;
+}
+
+/* Active nested item indentation fix (Primary Sidebar Only) */
+.md-sidebar--primary .md-nav__item .md-nav__item .md-nav__link--active,
+.md-sidebar--primary .md-nav__item .md-nav__item.md-nav__item--active > .md-nav__link {
+  padding-left: 30px !important; /* 2px less to account for the border-left */
+}
+
+/* ── Sidebar section-to-section spacing ────────────────── */
+/* Every .md-nav__item--section gets consistent vertical gap */
+.md-nav__item--section {
+  margin-top: var(--pv-space-sm);
+}
+/* Remove margin from first section so Home → Level 0 doesn't gap extra */
+.md-nav__item--section:first-of-type {
+  margin-top: 0;
+}
+
+/* ── TOC — Right Sidebar ──────────────────────────────────── */
+.md-sidebar--secondary {
+  width: 12rem;
+}
+
+.md-nav--secondary {
+  border-left: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-nav--secondary .md-nav__list {
+  border-left: none;
+}
+
+/* TOC items */
+.md-nav--secondary .md-nav__item .md-nav__link {
+  font-size: var(--pv-fs-small);
+  border-left: 2px solid transparent;
+  padding: 4px var(--pv-space-md);
+  color: var(--md-default-fg-color--light);
+  transition: color var(--pv-transition-fast) ease, border-color var(--pv-transition-fast) ease;
+}
+
+/* ── TOC spacing & hierarchy ────────────────────────── */
+.md-nav--secondary .md-nav__item {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* Nested TOC items — indent under parent */
+.md-nav--secondary .md-nav__item .md-nav {
+  padding-left: 14px;
+}
+
+/* Active TOC item — left accent border */
+.md-nav--secondary .md-nav__item .md-nav__link--active,
+.md-nav--secondary .md-nav__link--passive:hover,
+.md-nav--secondary .md-nav__link:hover {
+  color: var(--pv-toc-active);
+  border-left-color: var(--pv-toc-active);
+}
+
+.md-nav--secondary .md-nav__item--active > .md-nav__link {
+  color: var(--pv-toc-active);
+  border-left-color: var(--pv-toc-active);
+  font-weight: 500;
+  background: transparent;
+}
+
+/* TOC active via scrollspy (toc.follow) */
+[data-md-component="toc"] .md-nav__link--active {
+  color: var(--pv-toc-active) !important;
+  border-left-color: var(--pv-toc-active) !important;
+}
+
+/* ── Cards Grid ────────────────────────────────────────────── */
+.md-typeset .grid.cards {
+  grid-gap: var(--pv-space-md);
+}
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > ol > li,
+.md-typeset .grid.cards > li {
+  border-radius: var(--pv-radius-lg);
+  padding: var(--pv-space-lg);
+  background: var(--md-default-fg-color--lightest);
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform var(--pv-transition-normal) ease,
+              box-shadow var(--pv-transition-normal) ease,
+              border-color var(--pv-transition-normal) ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > ol > li:hover,
+.md-typeset .grid.cards > li:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04), 0 0 15px rgba(0, 240, 255, 0.15);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+/* Card icon tiles */
+.md-typeset .grid.cards .twemoji,
+.md-typeset .grid.cards .md-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--pv-radius-sm);
+  background: var(--md-accent-fg-color--transparent);
+  margin-right: var(--pv-space-sm);
+}
+
+/* Domain coverage grid — compact */
+.md-typeset .grid.cards > ul:has(li) {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.md-typeset .grid.cards > ul > li:has(.twemoji) {
+  text-align: center;
+  padding: var(--pv-space-md);
+  border-radius: var(--pv-radius-md);
+}
+
+/* ── Homepage Search Hero ──────────────────────────────────── */
+.pv-hero-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+  margin: var(--pv-space-lg) auto var(--pv-space-lg);
+  padding: 8px 18px;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 9999px;
+  color: var(--md-default-fg-color--light);
+  font-size: var(--pv-fs-body);
+  cursor: pointer;
+  transition: box-shadow var(--pv-transition-normal) ease,
+              border-color var(--pv-transition-normal) ease,
+              transform var(--pv-transition-fast) ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.pv-hero-search:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+.pv-hero-search:active {
+  transform: scale(0.98);
+}
+
+.pv-hero-search-icon {
+  display: flex;
+  align-items: center;
+  color: var(--md-default-fg-color--lighter);
+  flex-shrink: 0;
+}
+
+.pv-hero-search-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.pv-hero-search span {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pv-hero-search-hint {
+  flex: 0;
+  font-size: var(--pv-fs-xs);
+  color: var(--md-default-fg-color--lighter);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.pv-hero-search-hint kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  font-size: var(--pv-fs-xs);
+  font-family: inherit;
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 3px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  margin: 0 1px;
+}
+
+/* ── Homepage vertical rhythm ──────────────────────────────── */
+/* Spacing scale: 8/16/24/32/48 */
+/* Hero search → H1 → subtitle → first callout — consistent spacing */
+
+/* Hero block sits outside <main>, so its parent needs the same
+   horizontal constraints as .md-grid (max-width: 61rem + auto margins) */
+.md-container:has(.pv-hero-search) > .md-typeset {
+  max-width: 61rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+/* Hero→H1: the hero is in {% block hero %} outside <main>, so structural
+   margins from .md-main__inner (1.5rem) and .md-content__inner (.6rem) add
+   ~34px on top of hero's margin-bottom. Collapse them when hero is present. */
+.md-container:has(.pv-hero-search) .md-main__inner {
+  margin-top: 0;
+}
+
+.md-container:has(.pv-hero-search) .md-content__inner {
+  padding-top: 0;
+}
+
+/* Theme adds an empty ::before (6.4px) on .md-content__inner for the edit-link
+   layout. When no edit link exists, this creates extra space. Suppress it. */
+.md-container:has(.pv-hero-search) .md-content__inner::before {
+  display: none;
+}
+
+/* Hero→H1: distinct section (~24px from hero margin-bottom alone) */
+/* H1→subtitle: tightly related (H1 margin-bottom: 24px → keep default) */
+/* Subtitle→first callout: distinct section (~32px via adjacent combinators) */
+
+/* Adjacent hr/.admonition pairs get consistent distinct-section spacing */
+.md-typeset hr + .admonition,
+.md-typeset hr + details {
+  margin-top: var(--pv-space-xl);
+}
+
+.md-typeset .admonition + hr,
+.md-typeset details + hr {
+  margin-top: var(--pv-space-xl);
+}
+
+/* ── Admonitions / Callouts (soft borderless background-tint) ──── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--pv-radius-md);
+  font-size: 15px;
+  border: none;
+  border-left: 4px solid var(--md-primary-fg-color);
+  background: var(--md-default-fg-color--lightest);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* Theme-specific left-border colors */
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  border-left-color: var(--md-primary-fg-color);
+}
+
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-left-color: #2e7d32;
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-left-color: #ed6c02;
+}
+
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-left-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .admonition.success,
+.md-typeset details.success {
+  border-left-color: #2e7d32;
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-left-color: #d32f2f;
+}
+
+/* ── Callout title — fix icon overlap (shared component fix) ── */
+/* Use flexbox layout so icon and text never touch/overlap */
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > .admonition-title,
+.md-typeset details > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent !important;
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+  font-size: var(--pv-fs-small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: var(--pv-space-md) var(--pv-space-md) 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+/* Pull the ::before icon out of absolute positioning into flex flow */
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > .admonition-title::before,
+.md-typeset details > summary::before {
+  position: static !important;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  top: auto;
+  left: auto;
+}
+
+/* Info title */
+.md-typeset .admonition.info > .admonition-title,
+.md-typeset details.info > .admonition-title,
+.md-typeset details.info > summary {
+  color: var(--md-primary-fg-color);
+}
+
+/* Tip title */
+.md-typeset .admonition.tip > .admonition-title,
+.md-typeset details.tip > .admonition-title,
+.md-typeset details.tip > summary {
+  color: #2e7d32;
+}
+
+/* Warning title */
+.md-typeset .admonition.warning > .admonition-title,
+.md-typeset details.warning > .admonition-title,
+.md-typeset details.warning > summary {
+  color: #ed6c02;
+}
+
+/* Note title */
+.md-typeset .admonition.note > .admonition-title,
+.md-typeset details.note > .admonition-title,
+.md-typeset details.note > summary {
+  color: var(--md-accent-fg-color);
+}
+
+/* Success title */
+.md-typeset .admonition.success > .admonition-title,
+.md-typeset details.success > .admonition-title,
+.md-typeset details.success > summary {
+  color: #2e7d32;
+}
+
+/* Danger title */
+.md-typeset .admonition.danger > .admonition-title,
+.md-typeset details.danger > .admonition-title,
+.md-typeset details.danger > summary {
+  color: #d32f2f;
+}
+
+/* Content area inside callout — no extra background */
+.md-typeset .admonition > *:not(.admonition-title),
+.md-typeset details > *:not(.admonition-title):not(summary) {
+  padding: var(--pv-space-sm) var(--pv-space-md) var(--pv-space-md);
+}
+
+.md-typeset details > summary ~ * {
+  padding: var(--pv-space-sm) var(--pv-space-md) var(--pv-space-md);
+}
+
+/* ── Tables ────────────────────────────────────────────────── */
+.md-typeset table:not([class]) {
+  border-radius: var(--pv-radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* Match header and body cell padding exactly so columns align */
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  padding: var(--pv-space-md);
+  border: none;
+}
+
+.md-typeset table:not([class]) tr:nth-child(even) {
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: transparent;
+  color: var(--md-accent-fg-color);
+  font-weight: 700;
+  font-size: 13px;      /* slightly larger than before for readability */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 12px;
+}
+
+.md-typeset table:not([class]) td {
+  font-size: 15px;
+  color: var(--md-default-fg-color);
+  line-height: 1.6;
+}
+
+/* Improve table contrast in dark mode */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  color: #67E8F9;
+  border-bottom-color: rgba(103, 232, 249, 0.15);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
+  color: #CBD5E1;  /* slightly brighter than body text for table data */
+}
+
+/* ── Breadcrumbs (navigation.path) ─────────────────────────── */
+.md-path {
+  font-size: var(--pv-fs-small);
+  margin-bottom: var(--pv-space-sm);
+}
+
+.md-path .md-path__item {
+  color: var(--md-default-fg-color--light);
+}
+
+.md-path .md-path__link {
+  color: var(--md-default-fg-color--light);
+  transition: color var(--pv-transition-fast) ease;
+}
+
+.md-path .md-path__link:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* ── Footer Nav ────────────────────────────────────────────── */
+.md-footer__inner {
+  padding: var(--pv-space-md) 0;
+}
+
+.md-footer-meta {
+  background-color: var(--md-primary-fg-color);
+}
+
+/* ── Micro-interactions ────────────────────────────────────── */
+/* Button hover */
+.md-typeset .md-button {
+  transition: background var(--pv-transition-fast) ease,
+              transform var(--pv-transition-fast) ease;
+}
+
+.md-typeset .md-button:hover {
+  transform: translateY(-1px);
+}
+
+.md-typeset .md-button:active {
+  transform: scale(0.98);
+}
+
+/* Link hover */
+.md-typeset a {
+  transition: color var(--pv-transition-fast) ease;
+}
+
+/* Sidebar toggle chevron animation */
+.md-nav__toggle ~ .md-nav__link .md-nav__icon {
+  transition: transform var(--pv-transition-normal) ease;
+}
+
+.md-nav__toggle:checked ~ .md-nav__link .md-nav__icon {
+  transform: rotate(90deg);
+}
+
+/* Smooth expand/collapse for sidebar sections */
+.md-nav__toggle ~ .md-nav {
+  transition: opacity var(--pv-transition-normal) ease,
+              transform var(--pv-transition-normal) ease;
+}
+
+/* Tabbed content transitions */
+.md-typeset .tabbed-set {
+  border-radius: var(--pv-radius-md);
+}
+
+.md-typeset .tabbed-set > .tabbed-labels {
+  font-size: 14px;
+}
+
+/* ── Responsive adjustments ────────────────────────────────── */
+@media screen and (max-width: 76.2344em) {
+  .md-search {
+    min-width: auto;
+  }
+  .pv-hero-search {
+    max-width: 320px;
+  }
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-search {
+    min-width: 260px;
+  }
+  .md-sidebar--primary {
+    width: 14rem;
+  }
+  .md-sidebar--secondary {
+    width: 12rem;
+  }
+}
+
+/* ── Dark mode adjustments (Readability Overhaul) ─────────── */
+[data-md-color-scheme="slate"] {
+  --pv-toc-active: #67E8F9;
+  --pv-header-bg: rgba(15, 23, 42, 0.85);
+  --pv-header-border: rgba(255,255,255,0.06);
+
+  /* Background: lifted from #0A0F1C to #0F172A — easier on eyes for long reading */
+  --md-default-bg-color: #0F172A;
+
+  /* Body text: warm near-white — NOT pure white (avoids halation on dark screens) */
+  --md-default-fg-color: #E2E8F0;
+  --md-default-fg-color--light: #94A3B8;
+  --md-default-fg-color--lighter: #475569;
+  --md-default-fg-color--lightest: rgba(255,255,255,0.04);
+
+  /* Primary / accent — soften cyan for text use, keep vivid for UI chrome */
+  --md-primary-fg-color: #6366F1;
+  --md-accent-fg-color: #67E8F9;        /* softer cyan vs #00F0FF — easier on eyes */
+  --md-accent-fg-color--transparent: rgba(103, 232, 249, 0.1);
+
+  /* Typeset link color — use softer accent */
+  --md-typeset-a-color: #67E8F9;
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Hero Section (Premium & Compact) ──────────────────────── */
+.pv-hero {
+  position: relative;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at bottom left, rgba(103, 232, 249, 0.08) 0%, transparent 40%),
+              linear-gradient(to bottom, transparent 80%, var(--md-default-bg-color) 100%); /* Smooth fade into content */
+  border-bottom: none; /* Removed hard border for smoother transition */
+  padding: 40px 0 30px 0; /* Reduced from 80px/60px by ~40% */
+  margin-bottom: var(--pv-space-lg);
+  overflow: hidden;
+}
+
+[data-md-color-scheme="default"] .pv-hero {
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+              radial-gradient(circle at bottom left, rgba(0, 240, 255, 0.05) 0%, transparent 40%),
+              linear-gradient(to bottom, transparent 80%, var(--md-default-bg-color) 100%);
+  border-bottom: none;
+}
+
+.pv-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pv-hero-content {
+  max-width: 800px;
+  z-index: 1;
+}
+
+.pv-hero-content p {
+  font-size: 1.15rem; /* slightly smaller to fit compact hero */
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+  margin-bottom: var(--pv-space-lg); /* reduced from xl */
+}
+
+.pv-hero-buttons {
+  display: flex;
+  gap: var(--pv-space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pv-hero-buttons .md-button {
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: all var(--pv-transition-normal) ease;
+}
+
+.pv-hero-buttons .md-button--primary {
+  background: var(--md-primary-fg-color);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.pv-hero-buttons .md-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6), 0 0 15px rgba(0, 240, 255, 0.3);
+  background: #4F46E5;
+}
+
+.pv-hero-buttons .md-button--primary svg {
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  transition: transform var(--pv-transition-normal) ease;
+}
+
+.pv-hero-buttons .md-button--primary:hover svg {
+  transform: translateX(4px);
+}
+
+.pv-hero-buttons .md-button:not(.md-button--primary) {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+[data-md-color-scheme="default"] .pv-hero-buttons .md-button:not(.md-button--primary) {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pv-hero-buttons .md-button:not(.md-button--primary):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+[data-md-color-scheme="default"] .pv-hero-buttons .md-button:not(.md-button--primary):hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ── Onboarding Banner ─────────────────────────────────────── */
+.pv-onboarding-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pv-space-md);
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.1), rgba(0, 240, 255, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--pv-radius-lg);
+  padding: var(--pv-space-lg);
+  margin-top: var(--pv-space-xl);
+  margin-bottom: var(--pv-space-xl);
+}
+
+.pv-onboarding-icon {
+  background: var(--md-primary-fg-color);
+  color: white;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+.pv-onboarding-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.pv-onboarding-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.pv-onboarding-content strong {
+  font-size: 1.1rem;
+  color: var(--md-default-fg-color);
+  margin-bottom: 4px;
+}
+
+.pv-onboarding-content p {
+  margin: 0;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+}
+
+[data-md-color-scheme="slate"] .pv-hero-search {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+
+[data-md-color-scheme="slate"] .pv-hero-search:hover {
+  border-color: var(--md-accent-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-nav__item .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-nav__item--active > .md-nav__link {
+  background: rgba(99, 133, 242, 0.15);
+}
+
+[data-md-color-scheme="slate"] .md-footer-meta {
+  background-color: #0B1120;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── Table of Contents (TOC) Refinement ────────────────────── */
+[data-md-color-scheme="slate"] .md-sidebar--secondary .md-nav--secondary {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--pv-radius-md);
+  padding: var(--pv-space-md) var(--pv-space-sm);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.md-sidebar--secondary .md-nav__item {
+  padding: 2px 0;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  border-radius: var(--pv-radius-sm);
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+}
+
+.md-sidebar--secondary .md-nav__link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--md-default-fg-color);
+}
+
+.md-sidebar--secondary .md-nav__link[data-md-state="active"],
+.md-sidebar--secondary .md-nav__link--active {
+  background: rgba(103, 232, 249, 0.08);
+  color: var(--md-accent-fg-color);
+  font-weight: 500;
+}
+
+/* ── Light mode adjustments ────────────────────────────────── */
+[data-md-color-scheme="default"] {
+  --pv-header-bg: var(--md-default-bg-color);
+  --pv-header-border: rgba(0,0,0,0.08);
+}
+
+[data-md-color-scheme="default"] .md-nav__item .md-nav__link--active,
+[data-md-color-scheme="default"] .md-nav__item--active > .md-nav__link {
+  background: rgba(99, 133, 242, 0.1);
+}
+
+/* ── Custom Logo Sizing & Header Tweaks ────────────────────── */
+/* Hide the redundant 'Zero2Root' text next to the logo */
+.md-header__title .md-header__topic:first-child {
+  display: none !important;
+}
+
+/* Drastically increase logo size (Desktop only) */
+.md-header__button.md-logo {
+  display: block !important; /* Force logo to show on mobile instead of text */
+}
+
+.md-header__button.md-logo img {
+  height: 2.2rem; /* Normal size for mobile so it fits the navbar */
+  width: auto;
+  max-height: none;
+  display: block;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-header__button.md-logo img {
+    height: 4.5rem; /* Massive size for desktop */
+    margin-top: -16px; /* Hang over the edges */
+    margin-left: -10px;
+    position: relative;
+    z-index: 100;
+  }
+}
+
+/* Hide 'Made with Material for MkDocs' */
+.md-copyright {
+  font-size: 0 !important;
+}
+.md-copyright__highlight {
+  font-size: 0.65rem !important;
+}

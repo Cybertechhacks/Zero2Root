@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+{% endblock %}
+
+{% block hero %}
+  {% if page and page.is_homepage %}
+    <style>
+      .md-content .md-typeset h1 { display: none !important; }
+    </style>
+    <div class="pv-hero">
+      <div class="pv-hero-inner md-grid">
+        <div class="pv-hero-content">
+          <h1>Zero2Root</h1>
+          <p>Elevate your cybersecurity career — from fundamentals to mastery.</p>
+          <div class="pv-hero-buttons">
+            <a href="level-0/" class="md-button md-button--primary">
+              Start Learning
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </a>
+            <a href="#what-makes-this-different" class="md-button">Why This Guide?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var heroSearch = document.querySelector(".pv-hero-search");
+      if (heroSearch) {
+        heroSearch.addEventListener("click", function(e) {
+          var searchLabel = document.querySelector(".md-header__button[for='__search']");
+          if (searchLabel) searchLabel.click();
+        });
+      }
+      document.addEventListener("keydown", function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+          e.preventDefault();
+          var searchLabel = document.querySelector(".md-header__button[for='__search']");
+          if (searchLabel) searchLabel.click();
+          setTimeout(function() {
+            var searchInput = document.querySelector(".md-search__input");
+            if (searchInput) searchInput.focus();
+          }, 100);
+        }
+      });
+    });
+  </script>
+{% endblock %}
