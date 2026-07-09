@@ -4,7 +4,7 @@ Keep the new pv-onboarding-banner, remove the old MkDocs admonition.
 """
 import re
 
-with open(r'd:/pentestvault-final (2)/pentestvault-final/pentestvault/site/index.html', 'r', encoding='utf-8') as f:
+with open('site/index.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
 # Remove the old admonition.tip block entirely
@@ -18,7 +18,7 @@ if content_new == content:
     pattern2 = r'<div class="admonition tip">\s*<p class="admonition-title">How to Use This Guide</p>.*?</div>'
     content_new = re.sub(pattern2, '', content, count=1, flags=re.DOTALL)
 
-with open(r'd:/pentestvault-final (2)/pentestvault-final/pentestvault/site/index.html', 'w', encoding='utf-8') as f:
+with open('site/index.html', 'w', encoding='utf-8') as f:
     f.write(content_new)
 
 # Verify
