@@ -67,6 +67,17 @@ Zero2Root is open source and community-driven. If you want to add a new tool, fi
 4. Push to the branch (`git push origin feature/AmazingContent`).
 5. Open a Pull Request.
 
+## 👤 Author
+ 
+Zero2Root is created and maintained by **Vinod Kumar Bontha**, a Security Analyst and penetration tester.
+ 
+- 🎓 Certifications: CEH (Master) · CRTA · CNSP
+- 🏆 Recognitions: ClearTax Hall of Fame (#5 among 18,650+ researchers), Max Healthcare Responsible Disclosure
+- 💼 LinkedIn: [linkedin.com/in/vinodkr000](https://linkedin.com/in/vinodkr000)
+- 💻 GitHub: [@Cybertechhacks](https://github.com/Cybertechhacks)
+ 
+Started as a personal knowledge base while preparing for offensive security roles, and grew into a structured, open resource for the community.
+
 ## 📄 License
 
-Zero2Root © 2026 — Open Source, Free Forever.
+Built and maintained by Vinod Kumar Bontha © 2026 — Open Source, Free Forever.

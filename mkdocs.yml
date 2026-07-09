@@ -80,10 +80,11 @@ extra:
       link: https://github.com/Cybertechhacks/Zero2Root
 
 copyright: >
-  Zero2Root &copy; 2026 — Open Source, Free Forever.
+  Built and maintained by Vinod Kumar Bontha · CEH (Master) | CRTA | CNSP · <a href="https://linkedin.com/in/vinodkr000" target="_blank" rel="noopener">LinkedIn</a>
 
 nav:
   - Home: index.md
+  - About: about.md
 
   - Level 0 — Foundations:
     - Overview: level-0/index.md
