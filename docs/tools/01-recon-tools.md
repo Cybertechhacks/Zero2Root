@@ -250,9 +250,13 @@ Setup:
 3. Add Transform Hubs (data source integrations)
 
 Core entities:
+
 - Domain, DNS name, URL
+
 - IP address, AS number, netblock
+
 - Person, email address, phone number
+
 - Organization, location
 
 Key transforms:
@@ -310,10 +314,15 @@ gau example.com | sort -u | grep -E "\.(php|asp|cfm|jsp)" > old_endpoints.txt
 
 **What to look for in historical content:**
 - Old API endpoints that may still be active
+
 - Removed admin panels that weren't properly access-controlled
+
 - Old versions of applications with known CVEs
+
 - Configuration files that were briefly indexed
+
 - Employee names and email addresses from old "about" pages
+
 - Forgotten subdomains from acquisitions or deprecated projects
 
 ---

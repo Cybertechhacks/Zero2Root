@@ -10,8 +10,11 @@
 Configuration review (also called hardening assessment or security baseline review) compares a system's actual configuration against a security standard:
 
 - **CIS Benchmarks** — Center for Internet Security publishes detailed benchmarks for almost every OS, application, and cloud platform. The most widely used standard.
+
 - **DISA STIGs** — US Defense Information Systems Agency. More strict than CIS, mandatory for US federal systems.
+
 - **Vendor hardening guides** — Microsoft's Security Compliance Toolkit, NIST SP 800-series.
+
 - **PCI-DSS requirements** — Specific configuration requirements for cardholder data environments.
 
 The output is a compliance gap report — which controls pass, which fail, and remediation guidance for each failure.

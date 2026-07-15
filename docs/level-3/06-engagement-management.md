@@ -16,15 +16,23 @@ The SOW is the legal contract defining what you're doing, for whom, at what cost
 **Scope:** The most critical section.
 ```
 In Scope:
+
 - Production web application: https://app.example.com and all subdomains
+
 - Associated REST APIs
+
 - Mobile applications: iOS v2.3.1 and Android v2.4.0 (builds to be provided)
 
 Out of Scope:
+
 - Third-party services (Stripe, Salesforce, AWS infrastructure)
+
 - Physical security testing
+
 - Social engineering of employees
+
 - Denial-of-service testing
+
 - Production database servers (identify vulnerabilities but do not exploit)
 ```
 
@@ -55,17 +63,27 @@ Tester: [Name, Firm, Phone]
 **The first call scenario:** You find unauthenticated RCE on a customer-facing payment server at 14:30 on a Tuesday.
 
 Do:
+
 - Stop exploiting it (you've confirmed the impact, no need to go further)
+
 - Document the finding with timestamp, evidence, and reproduction steps
+
 - Call the technical contact immediately — don't email
+
 - State clearly: "I need to inform you of a critical finding. We found unauthenticated remote code execution on [server]. I recommend discussing before I continue testing."
+
 - Let the client decide next steps
+
 - Follow up the call with a written summary within the hour
 
 Don't:
+
 - Continue exploiting to "show more impact"
+
 - Wait until the end of the day or week
+
 - Send an email and assume they'll see it
+
 - Make decisions about what to do with the vulnerability on the client's behalf
 
 **Why this matters in interviews:** Interviewers will ask about this scenario explicitly. The wrong answer is any version of "I'd keep testing to gather more evidence." The right answer prioritizes client communication and professional responsibility over thoroughness.
@@ -114,8 +132,11 @@ Structure:
 6. Q&A
 
 Tips:
+
 - Prepare for technical questions (developer will ask "but we sanitize input with X" — know your answer)
+
 - Prepare for pushback on severity (executive will say "but this is very unlikely" — have CVSS justification ready)
+
 - The audience is mixed — technical and executive. Adjust in real time.
 
 ---

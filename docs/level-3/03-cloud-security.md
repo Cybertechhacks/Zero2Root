@@ -28,8 +28,11 @@ IAM Policies    → JSON documents defining what actions are allowed on which re
 
 **Policy types:**
 - **Identity-based:** Attached to users, groups, or roles — defines what that identity can do
+
 - **Resource-based:** Attached to resources (S3 buckets, SQS queues) — defines who can access the resource
+
 - **Permission boundaries:** Maximum permissions an identity can have
+
 - **Service Control Policies (SCPs):** Organization-level controls that apply to all accounts in an AWS Organization
 
 ### AWS Enumeration
@@ -345,9 +348,13 @@ GCP is the least commonly assessed cloud platform but increasingly present in en
 Google Account / Service Account → IAM Roles → Permissions → Resources
 
 Key identity types:
+
 - Google Account: Individual user (person@gmail.com or person@company.com)
+
 - Service Account: Machine identity (app@project.iam.gserviceaccount.com)
+
 - Google Group: Group of users
+
 - Cloud Identity domain: Organization-level identity
 
 IAM hierarchy:

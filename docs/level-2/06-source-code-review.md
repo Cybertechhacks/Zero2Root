@@ -688,8 +688,11 @@ semgrep --config p/supply-chain .
 
 **Key questions during dependency review:**
 - Are there transitive dependencies with CVEs? (Not just direct dependencies)
+
 - Are dependencies pinned to specific versions, or using loose ranges (^, ~)?
+
 - Is there an automated process that flags new CVEs in dependencies?
+
 - Are production and development dependencies separated? (devDependencies shouldn't go to prod)
 
 ---

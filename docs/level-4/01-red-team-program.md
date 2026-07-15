@@ -13,7 +13,9 @@ A red team without objectives is just noisy. Every engagement must start with sp
 
 **Good objectives:**
 - "Determine whether an external attacker with no prior access can reach and exfiltrate data from the Finance file share within a 4-week engagement."
+
 - "Assess whether our SOC can detect credential theft and lateral movement within 72 hours of initial compromise."
+
 - "Simulate a ransomware operator's behavior post-initial access and measure containment effectiveness."
 
 Objectives drive scope, tactics, and success metrics. Without them, you can't write a meaningful report.
@@ -164,7 +166,9 @@ Purple teaming is the fastest path to improving detection capability. Once you'v
 
 **Pre-session preparation:**
 - Red team: document exact command syntax for each technique to be executed
+
 - Blue team: gather relevant detection hypotheses ("we think we detect this via Event ID X")
+
 - Both teams: agree on the execution environment (production vs isolated)
 
 ### Session Execution Template
@@ -231,8 +235,11 @@ This register becomes your evidence base for demonstrating program ROI.
 ### Minimum Viable Team
 
 For most organizations building an in-house capability:
+
 - **2 operators** is the absolute minimum for any useful red team program — you need at least one person who can review the other's work
+
 - **3-4 operators** allows concurrent engagements and specialization
+
 - **5+ operators** enables a continuous red team program with meaningful coverage
 
 ### Skill Matrix for Hiring
@@ -291,20 +298,29 @@ Total 3-person program:      ₹1.6–1.7 Cr/year
 
 **Outsource when:**
 - Security program is immature (fix the basics first)
+
 - Budget < ₹1 Cr/year allocated for red team
+
 - Fewer than 500 employees (likely insufficient attack surface to justify dedicated team)
+
 - No mature SOC to test against (red team without blue team feedback is just expensive pentesting)
 
 **Build in-house when:**
 - 1,000+ employees in security-sensitive industry
+
 - Existing SOC needs continuous challenging
+
 - Compliance/regulatory requirements mandate internal program
+
 - Long-term commitment to security capability building
+
 - Previous external engagements consistently achieve all objectives (defenses strong enough to warrant internal continuous testing)
 
 **Hybrid (recommended for most):**
 - Internal security team runs quarterly purple team exercises
+
 - External firm conducts annual red team assessment
+
 - Internal team handles continuous monitoring and threat hunting
 
 ---
@@ -315,18 +331,27 @@ Total 3-person program:      ₹1.6–1.7 Cr/year
 
 ```
 C2 Framework (choose one primary):
+
 - Cobalt Strike: Industry standard, expensive, excellent Malleable profiles
+
 - Havoc: Open source, actively developed, good evasion
+
 - Sliver: Open source, multi-protocol, good for training
 
 C2 Infrastructure:
+
 - VPS providers: Vultr, Linode, Hetzner (avoid AWS/Azure/GCP — ASNs are flagged)
+
 - Domain registrar: Namecheap (privacy options), Porkbun
+
 - DNS provider: Cloudflare (free, fast TTL updates)
 
 Redirectors:
+
 - nginx or Apache on VPS
+
 - Cloudflare proxy (masks origin IP, provides SSL)
+
 - AWS CloudFront as domain fronting (policy changes limiting this)
 ```
 
@@ -334,24 +359,37 @@ Redirectors:
 
 ```
 Active Directory:
+
 - BloodHound + SharpHound
+
 - Rubeus (Kerberos ticket operations)
+
 - Impacket suite (Linux → Windows protocol)
+
 - CrackMapExec / NetExec
+
 - PowerView
 
 Web Application:
+
 - Burp Suite Professional (non-negotiable)
+
 - Custom nuclei templates
 
 Post-Exploitation:
+
 - Mimikatz (credential extraction)
+
 - Seatbelt (host enumeration)
+
 - SharpHound (AD enumeration)
 
 Custom Development:
+
 - BOF (Beacon Object Files) for Cobalt Strike
+
 - Python for automation
+
 - C# for Windows tooling (less AV detection than PowerShell)
 ```
 
@@ -375,8 +413,11 @@ Enhanced lab:
 □ Packet capture capability (Wireshark on dedicated interface)
 
 Cloud lab options:
+
 - Detection Lab (GitHub) — automated Windows AD lab setup
+
 - BadBlood — populates AD with realistic users and vulnerabilities
+
 - GOAD (Game of Active Directory) — multi-domain AD lab
 ```
 

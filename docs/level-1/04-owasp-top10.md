@@ -32,8 +32,11 @@ The server authenticates the request (valid token) but doesn't check if the toke
 
 **IDOR variants:**
 - Numeric IDs: `/profile?id=1337` → try 1338, 1339...
+
 - Predictable references: `/files/2024/01/report.pdf` → try other dates, usernames
+
 - GUIDs/UUIDs: Less guessable but still exploitable if another endpoint leaks them
+
 - Indirect reference: modify parameters that look like display names but actually map to database references
 
 **Vertical Privilege Escalation:**
@@ -85,9 +88,13 @@ GET /download?file=....//....//etc/passwd   (filter bypass)
 ### Prevention
 
 - Deny by default — except for public resources
+
 - Implement access control in the server-side — never client-side
+
 - Re-validate permissions on every request, not just at login
+
 - Use indirect object references (random tokens, not sequential IDs) where possible
+
 - Log access control failures and alert on patterns
 
 ---
@@ -104,31 +111,45 @@ Failures in cryptography that expose sensitive data — failure to encrypt, use 
 
 **Data transmitted in cleartext:**
 - HTTP instead of HTTPS for login forms or sensitive pages
+
 - FTP, Telnet, SMTP without TLS
+
 - API endpoints that accept HTTP (even if the site has HTTPS, developers sometimes create HTTP endpoints for "internal" APIs)
 
 **Weak or outdated encryption:**
 - MD5 or SHA-1 for password hashing (no salt, too fast)
+
 - DES, 3DES, RC4 for data encryption
+
 - RSA keys < 2048 bits
+
 - SSLv2, SSLv3, TLS 1.0, TLS 1.1 — deprecated, vulnerable
+
 - Weak cipher suites (NULL cipher, EXPORT ciphers, DES, RC4, SEED)
+
 - ECB block cipher mode (leaks patterns)
 
 **Hardcoded cryptographic keys:**
 - Encryption keys in source code
+
 - Same key across all installations of software
+
 - Keys stored alongside encrypted data (defeating the purpose)
 
 **Poor key management:**
 - Long-lived API keys with no rotation
+
 - Encryption keys stored in version control
+
 - Encryption keys with overly broad access (same key for dev and production)
 
 **Missing HTTPS enforcement:**
 - No HSTS header (allows SSL stripping)
+
 - HSTS without `includeSubDomains` (subdomain can be HTTP, which sets cookies for the main domain)
+
 - HTTP login forms (even if form submits to HTTPS)
+
 - Mixed content (HTTPS page loads HTTP resources)
 
 **Cookie Secure flag missing:**
@@ -354,14 +375,20 @@ Design flaws that cannot be patched because the fundamental approach is wrong. T
 
 **Business logic vulnerabilities:**
 - Coupon codes that can be applied multiple times
+
 - Price manipulation (negative quantities, replacing price in request)
+
 - Race conditions in transfer/purchase flows
+
 - Step-skipping in multi-step workflows (add to cart → payment → skip payment → order confirmation)
 
 **Missing security controls by design:**
 - No rate limiting on authentication endpoints (by design, not oversight)
+
 - No email verification for account creation
+
 - Password reset that relies only on security questions (easily guessable)
+
 - "Remember me" that never expires
 
 **Example — Price Manipulation:**
@@ -391,11 +418,17 @@ POST /checkout/confirmation  # Skip directly to step 4
 ### How to Test
 
 Business logic testing requires understanding the application's intended behavior, then testing violations:
+
 - All numeric inputs: negative, zero, max values, decimal values
+
 - Price/quantity parameters: never trust client-supplied values
+
 - Multi-step flows: skip steps, replay steps, return to previous steps
+
 - Discount/coupon codes: apply multiple times, apply after already applied
+
 - Time-limited offers: manipulate timestamps if visible
+
 - Concurrent requests: send multiple simultaneous requests for operations that should only execute once (race conditions — covered at Level 2)
 
 ---
@@ -423,16 +456,24 @@ http://target.com/backup/    → lists backup files
 
 **Verbose error messages:**
 - Stack traces revealing framework, versions, internal paths
+
 - Database error messages revealing query structure (enables SQLi)
+
 - "Debug mode" enabled in production
 
 **Unnecessary features/services enabled:**
 - Tomcat Manager accessible externally
+
 - phpMyAdmin accessible without IP restriction
+
 - Jenkins/GitLab/Jira without authentication
+
 - AWS S3 buckets with public read/write
+
 - Redis without authentication (default)
+
 - Elasticsearch without authentication (default before v8)
+
 - MongoDB without authentication (older defaults)
 
 **Missing security headers:**
@@ -448,7 +489,9 @@ Permissions-Policy: geolocation=()        # Feature policy
 **Cloud misconfigurations:**
 - S3 bucket public read: `aws s3 ls s3://target-bucket`
 - Open security groups (0.0.0.0/0 inbound on port 22, 3389)
+
 - Instance metadata service accessible (SSRF → cloud creds)
+
 - No MFA on cloud console root account
 
 ### How to Test
@@ -491,7 +534,9 @@ wappalyzer                            # Browser extension
 
 **Check response headers:**
 - `X-Powered-By: PHP/5.6.40` → PHP 5.6 is end-of-life since 2018
+
 - `Server: Apache/2.2.34` → Apache 2.2 is EOL
+
 - `X-Generator: Drupal 7` → Check CVEs for Drupal 7
 
 **JavaScript libraries:**
@@ -566,7 +611,9 @@ hydra -l admin -P /usr/share/wordlists/rockyou.txt http-post-form "target.com/lo
 
 **Predictable session tokens:**
 - Tokens that are sequential (`session=10001`, `10002`, `10003`)
+
 - Tokens derived from username + timestamp
+
 - Short token length (easy to brute force)
 
 **Session fixation:**
@@ -621,9 +668,13 @@ john --format=HMAC-SHA256 --wordlist=rockyou.txt token.txt
 ### Insecure Password Recovery
 
 - Security questions with easily guessable answers
+
 - Password reset link sent to email but doesn't expire
+
 - Password reset token predictable (timestamp-based)
+
 - Reset token sent in URL where it appears in logs and Referer headers
+
 - No rate limiting on reset attempts (allows token brute force)
 
 ---
@@ -678,14 +729,18 @@ pickle.dumps(Exploit())  # Generates payload
 ### Supply Chain Attacks
 
 Malicious code introduced through dependencies, build systems, or update mechanisms:
+
 - SolarWinds: Build pipeline compromised, malicious code in official updates
+
 - npm typosquatting: `crossenv` instead of `cross-env`
 - Dependency confusion: Private package names squatted in public repos
 
 ### Prevention
 
 - Use digital signatures to verify software/updates
+
 - Use package managers that verify integrity (npm lock files, pip hash checking)
+
 - Monitor dependencies for unexpected changes
 
 ---
@@ -698,39 +753,56 @@ Malicious code introduced through dependencies, build systems, or update mechani
 
 **Authentication events:**
 - Successful logins: user, IP, timestamp, user-agent
+
 - Failed logins: user, IP, timestamp, error type
+
 - Logouts
+
 - Password changes and resets
+
 - MFA events (success, failure, bypass)
 
 **Authorization events:**
 - Access to sensitive resources
+
 - Access control failures (403s) — especially repeated failures (brute force indicator)
+
 - Privilege escalation events
 
 **Input validation failures:**
 - SQL injection attempts (error-based)
+
 - XSS attempts
+
 - Invalid input patterns
 
 **Security control events:**
 - WAF blocks
+
 - IDS/IPS alerts
 
 ### What Makes Logging Useful
 
 - Logs must be **centralized** (SIEM) — local logs can be deleted by attacker
+
 - Logs must be **tamper-evident** — attacker who gains OS access will clear local logs
+
 - Logs must have **sufficient detail** — "login failed" is useless without the username, IP, and timestamp
+
 - **Alerting** must exist — logging without alerting means breaches go undetected
+
 - **Retention** must be sufficient — many breaches are discovered months later; logs must cover the discovery window
 
 ### Pentesting Angle
 
 This category is about what happens *after* exploitation — not a vulnerability you exploit directly. But in a red team or pentest context:
+
 - Check if repeated failed logins trigger lockout or alerting
+
 - Check if accessing unauthorized resources (IDOR) generates any visible response indicating detection
+
 - Check if error messages you trigger end up in logs (and what detail they capture)
+
 - During post-exploitation: examine logs to understand what was captured about your activities
 
 ---
@@ -839,9 +911,13 @@ for port in [22, 80, 443, 3306, 8080, 8443]:
 ### Prevention
 
 - Whitelist allowed domains/IPs
+
 - Validate and sanitize URLs before making requests
+
 - Use network-level controls to prevent server from reaching internal services
+
 - Disable unused URL schemes (file://, dict://, gopher://)
+
 - In AWS: enforce IMDSv2 (requires session token, not accessible via simple GET)
 
 ---

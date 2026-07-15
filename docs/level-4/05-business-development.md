@@ -35,9 +35,13 @@ Boutique firms typically bill at 2-3x the cost of the consultant (covering overh
 The goal of every client relationship is to move from "vendor" to "trusted advisor" — the person the CISO calls when they have a problem, not just when they need to buy something.
 
 How to build it:
+
 - Share relevant threat intelligence proactively (not just when billing)
+
 - Be honest about what you don't know and refer appropriately
+
 - Call out problems with their approach even if it loses you the sale
+
 - Follow up on recommendations from previous reports — do they need help prioritizing?
 
 ### Handling Scope Disagreements

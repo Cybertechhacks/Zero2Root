@@ -139,10 +139,15 @@ adb logcat | grep -iE "(password|token|key|secret|credential|auth)"
 
 **Common findings:**
 - Cleartext credentials in SharedPreferences
+
 - Unencrypted SQLite database with user data
+
 - Sensitive data in log files (debug logging left in production)
+
 - Session tokens stored in external storage
+
 - Sensitive data in app cache
+
 - Cleartext HTTP traffic captured in network cache
 
 ### MASVS-CRYPTO — Cryptography

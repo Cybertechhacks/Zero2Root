@@ -71,8 +71,11 @@ masscan 0.0.0.0/0 -p80 --exclude 192.168.1.0/24
 
 **Key concepts for interviews:**
 - Authenticated vs unauthenticated scanning — authenticated scans are dramatically more thorough (checks patch level, installed software versions, local config)
+
 - Plugin families — Windows, Linux, Web Servers, Databases, SSL/TLS, etc.
+
 - False positives — always validate Critical and High findings before reporting
+
 - Scan policies — safe checks only vs intrusive checks (some plugins can crash services)
 
 ```bash
@@ -157,9 +160,13 @@ The central tool for web application testing. Every web pentester must know this
 **Repeater:** Resend and modify individual requests manually. Core workflow tool.
 
 **Intruder:** Automated fuzzing. Four attack types:
+
 - Sniper: One payload, one position
+
 - Battering Ram: Same payload, multiple positions
+
 - Pitchfork: Multiple payloads, one-to-one pairing
+
 - Cluster Bomb: Multiple payloads, all combinations (most thorough)
 
 **Scanner (Pro):** Active and passive vulnerability scanning. Passive = analysis of traffic already captured. Active = sends additional requests to probe for vulnerabilities.
@@ -170,10 +177,15 @@ The central tool for web application testing. Every web pentester must know this
 
 **Extensions (BApp Store):**
 - Autorize: Tests access control by replaying requests with different session tokens
+
 - Logger++: Advanced request logging
+
 - InQL: GraphQL introspection and testing
+
 - JWT Editor: JWT manipulation
+
 - JS Link Finder: Extracts endpoints from JavaScript files
+
 - Param Miner: Discovers hidden parameters
 
 ```

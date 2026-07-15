@@ -29,7 +29,9 @@
 Interviewers for junior roles will spend 20–30% of the technical round on fundamentals. Common mistakes:
 
 - **Memorizing steps without understanding why** — "SYN, SYN-ACK, ACK" is the right answer but "because TCP needs to establish sequence numbers for reliable ordered delivery and the three steps confirm both sides can transmit and receive" is what gets you the job.
+
 - **Knowing tool names, not what they do at the packet level** — "I used Nmap" vs "Nmap SYN scans work because we send a SYN, receive SYN-ACK, then send RST instead of completing the handshake, so we enumerate open ports without completing a TCP session."
+
 - **Skipping OS internals** — Windows process injection, Linux SUID binaries, and file permission exploitation come up even at junior level.
 
 ---

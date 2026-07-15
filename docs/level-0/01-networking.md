@@ -68,12 +68,19 @@ TCP uses 9 control flags in the header:
 | NS  | 0x100 | Nonce Sum (experimental) | |
 
 **Pentesting relevance of flag combinations:**
+
 - `SYN` only → beginning of connection attempt
+
 - `SYN + ACK` → server accepting connection
+
 - `RST + ACK` → port is closed (immediate rejection)
+
 - `FIN + ACK` → graceful connection close
+
 - `FIN` only (no ACK) → FIN scan technique — RFC says closed ports must RST, open ports should ignore; some firewalls pass FIN packets that would block SYNs
+
 - `ACK` only → ACK scan — maps stateful firewall rules; ports behind stateful firewalls return RST whether open or closed, but ACKs may pass through packet-filter firewalls
+
 - Xmas scan: `FIN + PSH + URG` — so-named because the flags "light up the tree"
 
 ### TCP Connection Teardown
@@ -93,8 +100,11 @@ UDP is **connectionless, unreliable, and unordered.** No handshake, no sequence 
 **Use cases:** DNS (53), DHCP (67/68), SNMP (161), NTP (123), TFTP (69), RADIUS (1812), VoIP (RTP), gaming, streaming — anything where speed matters more than reliability or where the application handles retransmission itself.
 
 **UDP scanning challenge:** Unlike TCP (which gives RST for closed ports), UDP gives no response for open ports in most cases. A closed UDP port triggers an ICMP Port Unreachable message. This makes UDP scanning slow and unreliable:
+
 - No response = port might be open OR packet was dropped
+
 - ICMP Port Unreachable = port is closed
+
 - Many hosts rate-limit ICMP responses, making UDP scans slower than TCP
 
 ```bash
@@ -114,15 +124,23 @@ nmap -sU --top-ports 20 target
 IPv4 addresses are 32 bits, written in dotted-decimal notation (four octets). `192.168.1.100` = `11000000.10101000.00000001.01100100`.
 
 **Private ranges (RFC 1918):**
+
 - `10.0.0.0/8` — 10.0.0.0 to 10.255.255.255 (16,777,216 addresses)
+
 - `172.16.0.0/12` — 172.16.0.0 to 172.31.255.255 (1,048,576 addresses)
+
 - `192.168.0.0/16` — 192.168.0.0 to 192.168.255.255 (65,536 addresses)
 
 **Other special ranges:**
+
 - `127.0.0.0/8` — Loopback (127.0.0.1 = localhost)
+
 - `169.254.0.0/16` — APIPA (Automatic Private IP Addressing) — assigned when DHCP fails
+
 - `0.0.0.0` — "This network" / "any address" — used in routing and listen statements
+
 - `255.255.255.255` — Limited broadcast
+
 - `224.0.0.0/4` — Multicast
 
 **Subnetting:** A subnet mask defines how many bits are the network portion. `/24` means 24 bits for network, 8 bits for host — 256 addresses (254 usable, minus network address and broadcast).
@@ -222,12 +240,19 @@ Connection: keep-alive
 ```
 
 Key headers relevant to pentesting:
+
 - `Host`: Virtual host routing — changing this can reach different vhosts on the same IP
+
 - `Authorization`: Bearer tokens, Basic auth, API keys
+
 - `Cookie`: Session management
+
 - `Referer`: Can leak sensitive URLs
+
 - `X-Forwarded-For`: IP forwarding header — can be spoofed to bypass IP-based controls
+
 - `Content-Type`: Changing this (e.g., `application/json` → `application/xml`) can trigger parsing differences
+
 - `Origin`: Cross-origin request origin — relevant to CORS
 
 ### HTTP Methods
@@ -267,10 +292,15 @@ Key headers relevant to pentesting:
 Cookies carry session state in a stateless protocol. Security-relevant cookie attributes:
 
 - **Secure:** Cookie only sent over HTTPS. Without this, cookies travel over HTTP and can be intercepted.
+
 - **HttpOnly:** JavaScript cannot access the cookie via `document.cookie`. Mitigates XSS-based session theft (but not all XSS impact).
+
 - **SameSite:** Controls cross-site sending. `Strict` = never sent cross-site; `Lax` = sent for top-level GET navigation; `None` = always sent (must also set Secure). `None` without `SameSite=Strict/Lax` enables CSRF.
+
 - **Domain:** Specifies which (sub)domains receive the cookie. A broad setting (e.g., `.example.com`) shares the cookie across all subdomains — a subdomain takeover would receive session cookies.
+
 - **Path:** Cookie only sent for URLs matching this path.
+
 - **Expires/Max-Age:** Session cookie (no expiry) vs persistent cookie.
 
 ---
@@ -299,9 +329,13 @@ Client                              Server
 ```
 
 Key concepts:
+
 - **Certificate:** Contains the server's public key, signed by a Certificate Authority (CA). The client verifies the certificate is signed by a trusted CA and that the hostname matches.
+
 - **Certificate chain:** Server cert → Intermediate CA cert → Root CA cert. The root CA must be in the client's trust store.
+
 - **HSTS (HTTP Strict Transport Security):** `Strict-Transport-Security: max-age=31536000; includeSubDomains` — tells browsers to *only* connect via HTTPS for the specified duration. Prevents SSL stripping attacks.
+
 - **Certificate Pinning:** Application hardcodes expected certificate/public key. Prevents MITM even with a trusted CA-issued certificate. Common in mobile apps — bypass is a core skill (MASTG).
 
 ### TLS Vulnerabilities to Know
@@ -406,7 +440,9 @@ A VLAN (Virtual LAN) logically segments a physical network. Hosts in VLAN 10 can
 **VLAN tagging (802.1Q):** Switches add a 4-byte 802.1Q tag to frames, including a 12-bit VLAN ID, when transporting frames over trunk links (links between switches or between switch and router).
 
 **Access port vs trunk port:**
+
 - **Access port:** Belongs to one VLAN; 802.1Q tags are stripped when frames leave toward the end device. End devices (PCs, servers) connect to access ports and are unaware of VLAN tagging.
+
 - **Trunk port:** Carries frames from multiple VLANs; 802.1Q tags are preserved. Switch-to-switch and switch-to-router links are trunks.
 
 **VLAN Hopping Attack 1 — Switch Spoofing:**
@@ -471,14 +507,25 @@ ssh -D 1080 pivot-host
 ## Summary: What to Memorize Cold
 
 - OSI 7 layers and what attacks target each
+
 - TCP three-way handshake mechanics and SYN flood/SYN cookie relationship
+
 - TCP flags and what each means in a scan context
+
 - Private IP ranges
+
 - DNS record types and what zone transfer reveals
+
 - HTTP methods and status codes (200, 301, 400, 401, 403, 404, 500)
+
 - Cookie security attributes (Secure, HttpOnly, SameSite)
+
 - TLS handshake sequence
+
 - Port numbers for all 30+ essential services
+
 - ARP poisoning mechanism
+
 - VLAN hopping techniques
+
 - Stateful vs stateless firewall differences

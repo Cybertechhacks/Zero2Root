@@ -22,13 +22,19 @@ ISO 27001 is the international standard for Information Security Management Syst
 ### Structure
 
 **ISO 27001** (the main standard) defines:
+
 - The ISMS requirements
+
 - Clauses 4–10: context, leadership, planning, support, operations, evaluation, improvement
 
 **ISO 27002** (the controls reference) provides guidance on 93 information security controls organized into 4 themes:
+
 - People controls (8) — screening, training, HR security
+
 - Organizational controls (37) — policies, risk management, incident management
+
 - Technological controls (34) — access control, cryptography, vulnerability management
+
 - Physical controls (14) — physical access, equipment protection
 
 ### Gap Assessment Methodology
@@ -37,25 +43,37 @@ A gap assessment compares the current state against ISO 27001 requirements:
 
 ```
 Phase 1: Scoping
+
 - Define the ISMS scope: which business units, locations, systems?
+
 - Identify interested parties: customers, regulators, employees
 
 Phase 2: Document Review
+
 - Review existing security policies, procedures, records
+
 - Check against ISO 27001 clause requirements (4-10)
+
 - Map existing controls to Annex A controls
 
 Phase 3: Interviews
+
 - Interviews with CISO, IT manager, HR, legal, operations
+
 - Assess awareness, training, incident management processes
 
 Phase 4: Technical Assessment (if included)
+
 - Validate that technical controls described in documents are implemented
+
 - Sample testing of access controls, logging, patching
 
 Phase 5: Gap Report
+
 - For each ISO 27001 requirement: Conformant / Partially Conformant / Non-Conformant
+
 - Prioritized remediation plan
+
 - Estimated effort to close each gap
 ```
 
@@ -86,12 +104,16 @@ PCI-DSS applies to any organization that stores, processes, or transmits cardhol
 The key concept is **scope reduction** — minimize the systems that are in-scope for PCI by limiting which systems touch cardholder data.
 
 Cardholder data includes:
+
 - Primary Account Number (PAN) — the 16-digit card number
+
 - Cardholder name, expiration date, service code (sensitive when stored with PAN)
 
 Sensitive Authentication Data (SAD) — **must never be stored after authorization:**
 - Full magnetic stripe / chip data
+
 - CVV2/CVC2/CAV2 (the 3-4 digit security code)
+
 - PIN / PIN block
 
 ### The 12 PCI-DSS Requirements
@@ -117,16 +139,23 @@ External vulnerability scans must be conducted quarterly by an Approved Scanning
 
 **Key ASV scan rules:**
 - Must be from an external network perspective
+
 - Rescan required if initial scan fails
+
 - ASVs must be on the PCI SSC approved list
+
 - Results must be validated and documented
 
 ### PCI-DSS in Pentest Engagements
 
 Requirement 11.4 mandates penetration testing at least annually and after significant changes:
+
 - Must include both network and application layer testing
+
 - Must cover the entire CDE perimeter and critical systems
+
 - Must include segmentation validation testing
+
 - Must follow a defined methodology (OWASP, PTES)
 
 **Segmentation testing** — if the client claims their CDE is segmented from the rest of the network, you must verify this. Failure to properly test and document segmentation is a PCI audit finding.
@@ -156,9 +185,13 @@ SOC 2 is an auditing standard developed by the AICPA. It's relevant for service 
 ### What Pentesters Need to Know
 
 SOC 2 security requirements for testing context:
+
 - **CC6.1:** Logical access controls — covered by access control assessments
+
 - **CC6.6:** Restrict logical access from outside the entity's boundaries — perimeter security, EPT
+
 - **CC7.1:** Detection of vulnerabilities — regular VA/PT requirement
+
 - **CC7.2:** Monitor for anomalies — logging and monitoring
 
 Many SOC 2 reports include an internal penetration test as evidence for CC7.1. The pentest report is attached as evidence in the SOC 2 audit.
@@ -172,15 +205,22 @@ The Indian Computer Emergency Response Team (CERT-In) issued the Information Tec
 ### CERT-In Directions 2022 — Key Requirements
 
 **Mandatory incident reporting** (within 6 hours of detection):
+
 - Data breaches and leakages
+
 - Attacks on critical systems
+
 - Ransomware attacks
+
 - Compromise of critical networks/systems
+
 - Unauthorized access to IT systems
 
 **Log maintenance:**
 - ICT infrastructure logs must be maintained for 180 days (6 months)
+
 - Logs must be stored within India
+
 - Must be provided to CERT-In on demand
 
 **Time synchronization:**
@@ -195,8 +235,11 @@ The Indian Computer Emergency Response Team (CERT-In) issued the Information Tec
 ### IT Act 2000 — Relevant Sections for Pentesters
 
 As noted in Level 0, pentesters must operate under written authorization. Key sections:
+
 - Section 43: Unauthorized access — civil liability
+
 - Section 66: Unauthorized access with criminal intent — imprisonment up to 3 years
+
 - Section 66C: Identity theft
 
 Authorization must come from the **legal owner** of the systems, not just an IT administrator. The authorization document (Statement of Work) is your legal protection.
@@ -209,26 +252,41 @@ Authorization must come from the **legal owner** of the systems, not just an IT 
 
 ```
 Week 1: Kick-off and document collection
+
 - Kick-off meeting with stakeholders
+
 - Collect: existing policies, procedures, previous audit reports, risk register
+
 - Schedule interviews
 
 Week 2-3: Interviews and observations
+
 - CISO/ISSO — overall security program
+
 - IT Operations — patching, monitoring, access management
+
 - HR — background checks, training, onboarding/offboarding
+
 - Legal/Compliance — regulatory inventory, data processing agreements
+
 - Business units — data handling, third-party relationships
 
 Week 3-4: Technical sampling (if included)
+
 - Sample access control reviews
+
 - Review firewall ruleset
+
 - Check vulnerability management records
+
 - Review patch status samples
 
 Week 4: Analysis and reporting
+
 - Map findings against framework
+
 - Prioritize gaps by risk impact
+
 - Draft recommendations
 ```
 
@@ -275,7 +333,9 @@ Week 4: Analysis and reporting
 **Risk = Likelihood × Impact**
 
 Where:
+
 - **Likelihood** = probability that a threat will exploit a vulnerability
+
 - **Impact** = consequence if the risk materializes (financial, operational, reputational, regulatory)
 
 ### Risk Treatment Options
@@ -406,20 +466,35 @@ CERT-In Directions 2022 set mandatory requirements for all Indian entities (gove
 **6 hours from detection:**
 ```
 Incidents requiring mandatory reporting:
+
 - Data breach or data leak
+
 - Attack on critical systems and infrastructure
+
 - Unauthorised access to computer resource networks or systems
+
 - Defacement of website or intrusion into website/application
+
 - Scanning/probing that indicates preparation for attack
+
 - Compromise of critical systems/information
+
 - Ransomware attack
+
 - Malicious code attacks
+
 - Denial of Service (DoS) and Distributed Denial of Service (DDoS) attacks
+
 - Attacks on Internet of Things (IoT) devices and associated systems
+
 - Attacks on data centres and IT systems
+
 - Attacks on critical infrastructure
+
 - Attacks on public utility systems
+
 - Attacks on smart city components
+
 - Attacks on government digital payments systems
 ```
 
@@ -447,11 +522,17 @@ Mandatory fields in incident report:
 Mandatory: All ICT system logs must be retained for minimum 180 days
 
 Applies to:
+
 - All server logs (web, application, database, authentication)
+
 - Network device logs (firewall, router, switch)
+
 - Security device logs (IDS/IPS, WAF)
+
 - Endpoint logs
+
 - Email server logs
+
 - VPN logs
 
 Storage requirement: Logs must be stored within Indian jurisdiction
@@ -469,8 +550,10 @@ When reviewing Indian client environments, verify:
 
 ```
 Mandatory: All systems must synchronise to:
+
 - NTP server of National Physical Laboratory (NPL), CSIR
   Server: time.nplindia.in (stratum 1)
+
 - Or NTP server of National Informatics Centre (NIC)
   Server: time.nic.in
 

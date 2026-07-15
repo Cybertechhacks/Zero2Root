@@ -532,7 +532,9 @@ kerbrute userenum -d corp.local users.txt --dc dc.corp.local -o valid_users.txt
 
 **Why Kerbrute over LDAP spray:**
 - Kerberos preauth errors (event 4771) generate fewer alerts in many environments vs LDAP events (4625)
+
 - Doesn't require network access to LDAP (389) — only needs Kerberos (88)
+
 - Valid username enumeration: AS-REQ without preauth returns different error for valid vs invalid usernames
 
 ---

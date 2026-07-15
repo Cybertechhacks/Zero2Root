@@ -118,8 +118,11 @@ One key for both encryption and decryption. Both parties must share the key — 
 
 **Modes of operation (how to encrypt data larger than one block):**
 - **ECB (Electronic Code Book):** Each block encrypted independently with the same key. Same plaintext block → same ciphertext block. Pattern-preserving. Never use. (The "Linux penguin" ECB example is the standard illustration.)
+
 - **CBC (Cipher Block Chaining):** Each plaintext block XOR'd with previous ciphertext block before encryption. Requires an IV (Initialization Vector). Susceptible to padding oracle attacks (POODLE, BEAST).
+
 - **CTR (Counter):** Turns block cipher into a stream cipher. Parallelizable. The counter must never repeat with the same key.
+
 - **GCM (Galois/Counter Mode):** CTR + authentication tag. Provides both confidentiality and integrity (AEAD — Authenticated Encryption with Associated Data). Standard in modern TLS.
 
 ### Asymmetric Encryption
@@ -142,6 +145,7 @@ Two mathematically related keys: a **public key** (share freely) and a **private
 
 **Encryption vs Signing (critical distinction):**
 - **Encryption:** Encrypt with recipient's *public key* → only recipient (with private key) can decrypt.
+
 - **Signing:** Sign with sender's *private key* → anyone with sender's *public key* can verify the signature.
 
 Confusing these is a common mistake. "Encrypt with private key" for signing is sometimes said colloquially but is technically incorrect — signing uses a signature algorithm, not raw encryption.
@@ -153,8 +157,11 @@ Confusing these is a common mistake. "Encrypt with private key" for signing is s
 A hash function takes arbitrary input and produces a fixed-size output (digest). Properties:
 
 - **Deterministic:** Same input always produces same output.
+
 - **One-way (pre-image resistance):** Cannot derive input from output. (Not reversible — cracking means finding a match, not reversing.)
+
 - **Collision resistance:** Hard to find two different inputs producing the same output. (MD5 and SHA-1 are broken for collision resistance — never use for security.)
+
 - **Avalanche effect:** A single bit change in input completely changes the output.
 
 **Common hash functions:**
@@ -177,7 +184,9 @@ A hash function takes arbitrary input and produces a fixed-size output (digest).
 
 **Hashing vs Encryption (interview trap):**
 - Hashing is one-way. You cannot "decrypt" a hash.
+
 - Encryption is two-way. You can decrypt if you have the key.
+
 - Passwords should be *hashed*, not encrypted. If a system stores passwords in a way that the admin can "retrieve" a forgotten password (not reset it), the passwords are encrypted, not hashed — a serious vulnerability.
 
 ---
@@ -201,14 +210,20 @@ Browsers trust Root CAs. An Intermediate CA allows Root CAs to be kept offline (
 
 **Certificate Revocation:**
 - **CRL (Certificate Revocation List):** Periodically published list of revoked certificates. Large, slow to update.
+
 - **OCSP (Online Certificate Status Protocol):** Real-time per-certificate status check. Requires the client to contact the CA's OCSP responder.
+
 - **OCSP Stapling:** Server periodically fetches its own OCSP response and includes (staples) it in the TLS handshake. Reduces latency and privacy concern of OCSP queries.
 
 **Common PKI Attack Scenarios in Pentests:**
 - Self-signed certificates without proper validation → MITM possible
+
 - Expired certificates → indicates poor certificate hygiene
+
 - Certificates with too-broad Subject Alternative Names
+
 - Misconfigured Certificate Transparency (CT) monitoring → new certs for your domain issued without your knowledge
+
 - AD Certificate Services (ADCS) misconfigurations → domain privilege escalation (ESC1–ESC13 attack paths, covered at Level 3)
 
 ---
@@ -253,19 +268,28 @@ A basic taxonomy for classifying attacks, used in reports and interviews:
 
 **Active vs Passive:**
 - Passive: Observe without interfering (network sniffing, OSINT, reconnaissance). Harder to detect.
+
 - Active: Interact with the target (scanning, exploitation). Leaves traces.
 
 **Insider vs Outsider:**
 - Insider threat: Authorized user abusing access (malicious) or making mistakes (negligent).
+
 - Outsider threat: External attacker with no legitimate access.
 
 **Social Engineering:** Manipulating people into performing actions or divulging information.
+
 - Phishing: Mass email-based
+
 - Spear phishing: Targeted email
+
 - Vishing: Voice (phone)
+
 - Smishing: SMS
+
 - Pretexting: Creating a fabricated scenario
+
 - Baiting: Physical media (USB drops)
+
 - Tailgating/Piggybacking: Physical access by following authorized person
 
 **Man-in-the-Middle (MITM):** Attacker positions themselves between two communicating parties, intercepting and potentially modifying traffic. Enabled by ARP poisoning, rogue Wi-Fi AP, SSL stripping, DNS poisoning.

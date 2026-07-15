@@ -107,18 +107,28 @@ hashcat -m 5600 ntlmv2_hashes.txt /wordlists/rockyou.txt -r /usr/share/hashcat/r
 ### What Responder Poisons
 
 Responder responds to multiple protocols simultaneously:
+
 - **LLMNR** (UDP/5355) — Link-Local Multicast Name Resolution
+
 - **NBT-NS** (UDP/137) — NetBIOS Name Service  
 - **mDNS** (UDP/5353) — Multicast DNS
+
 - **MDNS** (TCP/5353)
 
 Responder also serves fake servers:
+
 - **SMB server** — captures NTLM authentication
+
 - **HTTP server** — captures NTLM via browser authentication
+
 - **HTTPS server** — with self-signed cert
+
 - **FTP server** — captures cleartext FTP credentials
+
 - **SMTP/IMAP/POP3** — captures email credentials
+
 - **DNS** — resolves all to attacker
+
 - **DHCP** — rogue DHCP (with -d flag)
 
 ### Responder Configuration
@@ -403,9 +413,13 @@ snmpset -v2c -c private target OID type value
 ### SNMP Findings in Reports
 
 A device with the "public" community string exposed is typically a **High** finding:
+
 - Reveals network topology, IP addresses, routing tables
+
 - Reveals software inventory (patch management intelligence)
+
 - Reveals system configuration details useful for targeted exploitation
+
 - Write community string = potential configuration modification
 
 ---

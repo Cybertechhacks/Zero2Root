@@ -142,9 +142,13 @@ When the response doesn't include the entity content:
 ```
 
 **XXE via file upload:** XML-based file formats processed server-side:
+
 - Microsoft Office documents (DOCX, XLSX, PPTX) — ZIP archives containing XML
+
 - SVG files
+
 - RSS/Atom feeds
+
 - SOAP requests
 
 **XXE to RCE (rare):** Some PHP environments with expect:// wrapper, or specific Java parsers with script execution capabilities.
@@ -445,8 +449,11 @@ Back-end uses chunked encoding: reads `0\r\n\r\n` (empty chunk = end).
 
 **Impact:**
 - Bypass security controls (WAF, authentication checks at front-end)
+
 - Poison the request queue — affect other users' requests
+
 - XSS via response poisoning
+
 - Reveal front-end request headers (including internal headers)
 
 **Testing:**

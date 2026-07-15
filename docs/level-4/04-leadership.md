@@ -35,7 +35,9 @@
 
 **The 70/20/10 model:**
 - 70% learning from challenging experience (real engagement work)
+
 - 20% learning from others (mentoring, pair testing, code review)
+
 - 10% formal training (courses, certifications, conferences)
 
 **Certifications as milestones:** CEH/eJPT → OSCP/eCPPT → CRTE/CRTO → OSEP — a clear certification progression gives team members visible milestones and forces exposure to structured technique domains.
@@ -94,8 +96,11 @@ A security assessment proposal must answer four questions a client is asking:
 Repeat business is the most profitable revenue. Keys to retention:
 
 - **Communicate proactively:** Don't wait for the client to ask for a status update. Brief check-ins during long engagements show professionalism.
+
 - **Deliver on time:** A late report destroys trust faster than any other failure.
+
 - **Executive summary first:** Deliver a one-page summary before the full report so the CISO can brief leadership immediately.
+
 - **Post-engagement follow-up:** 30 days after report delivery — "How is remediation going? Can we help clarify anything?" This call identifies scope for remediation verification and next year's assessment.
 
 ---

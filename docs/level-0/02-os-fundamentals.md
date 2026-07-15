@@ -53,7 +53,9 @@ Permissions are the most tested Linux topic in security interviews. Three sets o
 Each permission triplet: `r` (read = 4), `w` (write = 2), `x` (execute = 1).
 
 - `rwx` = 7, `rw-` = 6, `r-x` = 5, `r--` = 4, `---` = 0
+
 - `chmod 755` = `rwxr-xr-x` (owner full, group/others read+execute)
+
 - `chmod 644` = `rw-r--r--` (owner read+write, group/others read only)
 
 **Special permission bits — critical for privilege escalation:**
@@ -100,8 +102,11 @@ World-writable files called by root (via cron, service scripts) are privilege es
 
 **Capabilities:**
 A finer-grained alternative to SUID. Instead of granting full root privileges, capabilities grant specific permissions:
+
 - `cap_net_raw`: Raw socket operations (like ping)
+
 - `cap_setuid`: Can set arbitrary UIDs
+
 - `cap_sys_admin`: Almost unrestricted — nearly equivalent to root
 
 ```bash
@@ -116,7 +121,9 @@ python3 -c 'import os; os.setuid(0); os.system("/bin/bash")'
 ### Linux Users and Groups
 
 - **UID 0** = root. Any process with effective UID 0 has unrestricted access.
+
 - **UID 1-999** = system accounts (services). `/etc/passwd` shows `nologin` or `false` as shell — these shouldn't be able to log in interactively.
+
 - **UID 1000+** = regular user accounts.
 
 `/etc/passwd` format:
@@ -249,9 +256,13 @@ cat ~/.ssh/authorized_keys  # Understand who can SSH in as this user
 Windows has a layered architecture relevant to understanding attacks:
 
 - **User mode:** Application code runs here. Restricted access to hardware. Processes cannot directly access kernel memory or hardware.
+
 - **Kernel mode:** Operating system kernel, hardware drivers. Full access to system resources. A kernel exploit elevates from user mode to kernel mode.
+
 - **Windows API (Win32/Win64):** User-mode applications call Windows API functions. These are wrappers for Native API calls.
+
 - **Native API (ntdll.dll):** The bridge between user mode and kernel mode. System calls (syscalls) cross the boundary here. Direct syscalls bypass security software monitoring Win32 API.
+
 - **Hardware Abstraction Layer (HAL):** Abstracts hardware differences.
 
 ### Windows Registry
@@ -318,8 +329,11 @@ lsadump::sam
 ### LSASS — Local Security Authority Subsystem Service
 
 LSASS (`lsass.exe`) is one of the most targeted processes in Windows post-exploitation. It handles:
+
 - Authentication (validating credentials)
+
 - Security policy
+
 - Storing credentials in memory (Credential Cache)
 
 **Why LSASS matters:** LSASS caches credentials in memory — NTLM hashes, Kerberos tickets, and sometimes cleartext passwords (when WDigest is enabled, which it was by default before Windows 8.1/Server 2012 R2). Mimikatz's `sekurlsa::logonpasswords` reads these from LSASS memory.
@@ -332,7 +346,9 @@ HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest
 
 **LSASS protection:**
 - **PPL (Protected Process Light):** LSASS running as a protected process — direct memory reads from user mode are blocked. Bypass requires a vulnerable driver or kernel exploit.
+
 - **Credential Guard:** Stores secrets in a virtualization-based isolated container — even SYSTEM cannot read them from LSASS memory.
+
 - **ASR (Attack Surface Reduction):** Windows Defender rule to block credential dumping from LSASS.
 
 ### Windows Services

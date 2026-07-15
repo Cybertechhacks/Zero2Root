@@ -44,8 +44,11 @@ Keep it focused on professional relevance. Not where you grew up or your life st
 
 **Structure your story:**
 - What the engagement was (web app, internal network, mobile — no client names)
+
 - What the specific challenge was (unusual technology, time pressure, unexpected finding, difficult client)
+
 - What *you* did to address it
+
 - What the outcome was
 
 **Example:**
@@ -120,22 +123,30 @@ Always have 3-4 questions ready. Asking good questions signals genuine interest 
 
 **Technical questions:**
 - "What does a typical engagement look like here — scope, team structure, timeline?"
+
 - "What tools and methodology does the team standardize on?"
+
 - "How does the team stay current with new techniques? Conferences, internal research, training budget?"
 
 **Team and culture:**
 - "What does the junior-to-senior mentorship look like on this team?"
+
 - "How do you handle disagreements about finding severity with clients?"
+
 - "What does career progression look like from this role?"
 
 **Role-specific:**
 - "What's the biggest technical challenge the team is facing right now?"
+
 - "What would success look like in the first 6 months in this role?"
+
 - "What does the onboarding process look like?"
 
 **Questions to avoid:**
 - "What's the salary?" (Save for HR round or after offer)
+
 - "How many days of leave?" (Too early)
+
 - "Is the work from home?" (Sounds like the job isn't the priority)
 
 ---
@@ -146,12 +157,16 @@ If you have a military or defense background, this is a genuine differentiator �
 
 **What to emphasize:**
 - Mission focus: working toward a defined objective with clarity of purpose
+
 - Discipline under pressure: performing reliably in high-stakes, time-sensitive situations
+
 - Security mindset: understanding the real-world consequences of security failures
+
 - Team effectiveness: operating within structured hierarchies and across teams with different functions
 
 **What NOT to say:**
 - "I'm very disciplined" (everyone says this)
+
 - Vague references to "following orders" or "chain of command" (sounds inflexible)
 
 **Strong framing:**

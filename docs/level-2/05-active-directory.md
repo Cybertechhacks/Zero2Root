@@ -20,8 +20,11 @@
 **Organizational Units (OUs):** Containers for organizing AD objects. Group Policy Objects (GPOs) are linked to OUs.
 
 **Trust:** Relationship allowing authentication across domain/forest boundaries.
+
 - **Within forest:** Two-way transitive trust (automatic)
+
 - **Cross-forest:** Must be explicitly configured; can be one-way or two-way
+
 - **External trust:** To specific domains outside the forest
 
 ### AD Object Types
@@ -224,8 +227,11 @@ hashcat -m 13100 kerberoast.txt /wordlists/rockyou.txt -r /usr/share/hashcat/rul
 
 **Mitigation:** 
 - Use strong, random passwords (25+ characters) for service accounts
+
 - Prefer Managed Service Accounts (MSA/gMSA) — automatically managed passwords
+
 - Use AES encryption for Kerberos (reduces cracking speed)
+
 - Monitor for unusual TGS requests (many SPNs from one user in short time)
 
 ---

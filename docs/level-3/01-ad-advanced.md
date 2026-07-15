@@ -47,8 +47,11 @@ The Golden Ticket is a forged Kerberos TGT (Ticket Granting Ticket) signed with 
 ### Why It's Powerful
 
 - Forged TGT is indistinguishable from legitimate TGTs to domain services
+
 - Can forge membership in any group (Domain Admins, Enterprise Admins)
+
 - Persists even after the compromised account's password is changed — krbtgt must be rotated **twice** (due to how Kerberos handles previous password validation)
+
 - Default TGT lifetime is 10 hours, renewable up to 7 days. Golden Tickets can be forged with 10-year lifetimes
 
 ### Creating a Golden Ticket
@@ -191,8 +194,11 @@ ADCS is Microsoft's PKI implementation. Misconfigurations create privilege escal
 ### ESC1 — Misconfigured Certificate Templates
 
 Certificate templates with:
+
 - `CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT` enabled (client can specify SAN — Subject Alternative Name)
+
 - Enrollment rights for low-privileged groups (Domain Users)
+
 - EKU (Extended Key Usage) allows Client Authentication
 
 This lets any domain user enroll for a certificate with any subject (e.g., `administrator@corp.local`) in the SAN → authenticate as that user.
@@ -335,8 +341,11 @@ Get-ADComputer workstation01 -Properties ms-Mcs-AdmPwd | Select ms-Mcs-AdmPwd
 ### LAPS in BloodHound
 
 BloodHound maps which principals have `ReadLAPSPassword` rights on computer objects. In an assessment, after running SharpHound with `-c All`, check for:
+
 - Any non-administrative groups with LAPS read rights
+
 - Users with LAPS read rights who are compromised
+
 - Any path from your current user to a node with LAPS read rights
 
 A compromised account with LAPS read rights on 200 workstations = local admin on all 200 workstations = broad lateral movement.
@@ -407,9 +416,13 @@ Add-DomainObjectAcl -TargetIdentity "CN=AdminSDHolder,CN=System,DC=corp,DC=local
 ```
 
 **Detection:** Monitor for unexpected modifications to:
+
 - Domain object ACL (DS-Replication rights added)
+
 - AdminSDHolder ACL modifications
+
 - GenericAll/GenericWrite granted to non-admin accounts
+
 - Changes to `msDS-AllowedToActOnBehalfOfOtherIdentity` on computer objects
 
 ---
@@ -494,8 +507,12 @@ AdminSDHolder is an AD object in the System container that serves as a permissio
 
 **"Explain the difference between T1558 sub-techniques."**
 MITRE T1558 covers Steal or Forge Kerberos Tickets:
+
 - T1558.001 — Golden Ticket: forge TGT using krbtgt hash, domain-wide
+
 - T1558.002 — Silver Ticket: forge service ticket using service account hash, single service
+
 - T1558.003 — Kerberoasting: request legitimate TGS for offline cracking, no special rights needed
+
 - T1558.004 — AS-REP Roasting: request AS-REP for accounts without preauth, offline cracking
 Each has different prerequisites and detection signatures — understand all four distinctly.

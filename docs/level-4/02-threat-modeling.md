@@ -11,8 +11,11 @@ Threat modeling is a structured process for identifying potential threats to a s
 
 **When to threat model:**
 - During system design (most valuable — cheapest to fix)
+
 - When evaluating an acquisition
+
 - When significant architectural changes are made
+
 - As part of an incident response to understand attack paths
 
 ---
@@ -107,7 +110,9 @@ As a lead or architect, you'll facilitate these sessions with development teams:
 
 **Common challenges:**
 - Developers see threat modeling as slowing down delivery — frame it as finding bugs earlier when they're 100x cheaper to fix
+
 - Scope creep — focus on one service or feature per session
+
 - Incomplete DFDs — spend the first 30 minutes getting the DFD right before moving to threats
 
 ---
@@ -124,14 +129,20 @@ Building a red team capability from scratch is a common question at senior/lead 
 
 **In-house red team:**
 - Deeper organizational knowledge over time
+
 - Better aligned to internal culture and priorities
+
 - Expensive — fully-loaded cost per operator is ₹30-80L/year or more
+
 - Suitable for large organizations (1000+ employees in security-sensitive industries)
 
 **Outsourced (boutique firm):**
 - Fresh perspective, no organizational blind spots
+
 - Variable depth — depends heavily on the firm and team assigned
+
 - Cost-effective for most organizations
+
 - May lack deep institutional knowledge
 
 **Hybrid (recommended for most):** Internal security team handles continuous monitoring and purple team exercises; external firm conducts annual red team assessments that the internal team can't objectively conduct against themselves.
@@ -139,9 +150,13 @@ Building a red team capability from scratch is a common question at senior/lead 
 ### Team Composition
 
 A mature in-house red team typically has:
+
 - **Red Team Lead:** Manages operations, client/stakeholder communication, methodology
+
 - **Senior Operator (2-3):** Leads individual engagements, specialized expertise (cloud, AD, mobile)
+
 - **Operator (2-4):** Executes engagements under senior oversight
+
 - **Intel Analyst:** Threat intelligence, campaign tracking, purple team coordination
 
 ### Metrics and Program Effectiveness
@@ -187,10 +202,15 @@ Applying STRIDE to a concrete system makes it tangible. Here's a threat model fo
 ### System Description
 
 A customer-facing REST API for a banking application:
+
 - Mobile app clients authenticate via POST /auth/login → receive JWT
+
 - Authenticated endpoints: GET /account/balance, POST /transfer, GET /transactions
+
 - Backend: Node.js + Express, PostgreSQL database
+
 - Deployed on AWS EC2, behind an Application Load Balancer
+
 - JWT signed with HS256 using a shared secret
 
 ### Data Flow Diagram
@@ -204,66 +224,95 @@ A customer-facing REST API for a banking application:
 ```
 
 Trust boundaries:
+
 - Internet → ALB (public boundary)
+
 - ALB → API Server (internal, but ALB header injection possible)
+
 - API Server → PostgreSQL (internal network)
 
 ### STRIDE Analysis
 
 **SPOOFING:**
 - *Threat:* Attacker forges JWT tokens to impersonate users
+
 - *Root cause:* HS256 with weak shared secret; algorithm confusion (RS256→HS256)
+
 - *Mitigation:* Strong random secret (≥256 bits), validate `alg` header, prefer RS256
+
 - *Finding type:* Authentication weakness
 
 - *Threat:* Attacker spoofs client IP via X-Forwarded-For header
+
 - *Root cause:* ALB passes X-Forwarded-For; API trusts it for rate limiting
+
 - *Mitigation:* Use ALB's real client IP header, not X-Forwarded-For from client
 
 **TAMPERING:**
 - *Threat:* Attacker modifies transfer amount or recipient in transit
+
 - *Root cause:* No message signing on request body
+
 - *Mitigation:* HTTPS enforced (TLS in transit), HSTS header
+
 - *Finding type:* Transport security
 
 - *Threat:* SQL injection in transaction search parameters
+
 - *Root cause:* String concatenation in database queries
+
 - *Mitigation:* Parameterized queries throughout
 
 **REPUDIATION:**
 - *Threat:* User denies initiating a transfer, no audit trail
+
 - *Root cause:* Insufficient audit logging — logs don't capture user identity + action + timestamp
+
 - *Mitigation:* Log all state-changing operations with: user ID, action, parameters, timestamp, IP, result
 
 **INFORMATION DISCLOSURE:**
 - *Threat:* Error messages reveal database schema or stack traces
+
 - *Root cause:* Express default error handling returns stack traces in development mode
+
 - *Mitigation:* Custom error handler, disable verbose errors in production
 
 - *Threat:* JWT payload contains sensitive user data
+
 - *Root cause:* Developer added PII to JWT claims for convenience
+
 - *Mitigation:* JWT payload is base64 encoded, not encrypted — only include non-sensitive claims
 
 - *Threat:* Transaction history exposed to wrong user (IDOR)
+
 - *Root cause:* GET /transactions?account=12345 — no ownership check
+
 - *Mitigation:* Server-side ownership validation on every request
 
 **DENIAL OF SERVICE:**
 - *Threat:* Unauthenticated login endpoint overwhelmed with requests
+
 - *Root cause:* No rate limiting on /auth/login
+
 - *Mitigation:* Rate limiting (100 req/min per IP), CAPTCHA after 5 failures, account lockout
 
 - *Threat:* Large transaction history query exhausts database connections
+
 - *Root cause:* No pagination limit enforced
+
 - *Mitigation:* Maximum page size, query timeout, connection pooling
 
 **ELEVATION OF PRIVILEGE:**
 - *Threat:* Regular user accesses admin endpoints
+
 - *Root cause:* Role check missing on /admin/* endpoints
+
 - *Mitigation:* Middleware enforces role check on every admin route
 
 - *Threat:* JWT with manipulated `role` claim grants admin access
+
 - *Root cause:* Role derived from JWT payload which user controls
+
 - *Mitigation:* Derive role from database at request time, not from JWT
 
 ### Output — Security Requirements
@@ -309,31 +358,49 @@ For cloud architectures, add these to your standard STRIDE analysis:
 ADDITIONAL THREAT CATEGORIES FOR CLOUD:
 
 Identity and Access:
+
 - IAM role with excessive permissions (principle of least privilege violation)
+
 - Instance metadata service exposed to SSRF
+
 - Long-lived credentials (no rotation)
+
 - Cross-account trust misconfiguration
 
 Data Exposure:
+
 - S3 bucket with public read/write
+
 - Unencrypted data at rest (EBS, RDS, S3)
+
 - Sensitive data in CloudWatch logs
+
 - Secrets in Lambda environment variables (visible in console)
 
 Network:
+
 - Security group with 0.0.0.0/0 inbound
+
 - No VPC endpoint for S3/DynamoDB (traffic traverses internet)
+
 - Unencrypted inter-service communication
 
 Logging and Monitoring:
+
 - CloudTrail disabled
+
 - No alerting on root account usage
+
 - No VPC flow logs
+
 - S3 access logging disabled on sensitive buckets
 
 Supply Chain:
+
 - Unverified container images from public registries
+
 - No image scanning in CI/CD pipeline
+
 - Dependencies not pinned to versions (supply chain attack risk)
 ```
 
@@ -357,8 +424,11 @@ Workflow:
 8. Export report (Word document)
 
 Output:
+
 - Threat list with STRIDE category and description
+
 - Suggested mitigations for each threat
+
 - Risk summary
 
 Integration: Can be used in design reviews before any code is written.

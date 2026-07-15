@@ -33,19 +33,29 @@ java -jar burpsuite_community.jar
 
 ```
 Key controls:
+
 - Intercept ON/OFF toggle (hotkey: I)
+
 - Forward: send intercepted request (hotkey: F)
+
 - Drop: discard intercepted request
+
 - Action → Send to Repeater/Intruder/Scanner
 
 Proxy history:
+
 - Filter by host, method, status, MIME type, search string
+
 - Right-click any request → Send to tool
+
 - Ctrl+R = Send to Repeater
+
 - Ctrl+I = Send to Intruder
 
 Match and Replace (under Proxy Options):
+
 - Auto-replace headers, cookies, or body content on every request
+
 - Useful: replace User-Agent, add/modify auth headers globally
 ```
 
@@ -63,10 +73,15 @@ Workflow:
 6. Repeat with modifications
 
 Useful features:
+
 - Inspector panel: parse and modify parameters visually
+
 - Response rendering: switch between Raw/Pretty/Rendered/Hex
+
 - Search in response: Ctrl+F
+
 - History of all sends within the tab
+
 - Save requests/responses for report evidence
 ```
 
@@ -74,9 +89,13 @@ Useful features:
 
 ```
 Attack types:
+
 - Sniper:       One wordlist, one payload position (most common)
+
 - Battering Ram: Same payload in all positions simultaneously
+
 - Pitchfork:    Multiple wordlists, one-to-one (usernames + passwords)
+
 - Cluster Bomb: All combinations of all wordlists (exhaustive)
 
 Setup:
@@ -87,19 +106,29 @@ Setup:
 5. Start Attack
 
 Payload types:
+
 - Simple list: load wordlist file
+
 - Runtime file: read line-by-line during attack
+
 - Numbers: numeric ranges (for ID enumeration)
+
 - Dates: date ranges
+
 - Brute forcer: character set + length (for PIN brute force)
+
 - Null payload: repeat same request N times (race conditions)
 
 Grep Match (Options tab):
+
 - Flag responses containing specific strings
+
 - "Invalid password" vs "Welcome" — identifies successes
 
 Rate limiting (Community Edition throttle):
+
 - Intruder is rate-limited in Community to ~1 req/sec
+
 - Use Turbo Intruder extension for high-speed fuzzing
 ```
 
@@ -110,14 +139,21 @@ Passive scanning: always on — analyzes traffic passing through proxy
 Active scanning: sends additional probes to find vulnerabilities
 
 Active scan options:
+
 - Right-click request → Scan
+
 - Or use Dashboard → New Scan → enter scope
+
 - Configure scan speed vs thoroughness tradeoff
+
 - Review issues in Dashboard → Issues panel
 
 Issue severity and confidence:
+
 - High/Medium/Low severity
+
 - Certain/Firm/Tentative confidence
+
 - Always manually verify before reporting
 ```
 
@@ -125,7 +161,9 @@ Issue severity and confidence:
 
 ```
 Functions:
+
 - Decode/Encode: Base64, URL, HTML, Hex, Binary, Gzip, Zlib
+
 - Hash: MD5, SHA-1, SHA-256, SHA-512
 
 Workflow:
@@ -135,7 +173,9 @@ Workflow:
 4. Chain multiple operations
 
 Useful patterns:
+
 - Double URL decode: detect double-encoding bypass attempts
+
 - Base64 → JSON: decode JWT payload without external tools
 ```
 
@@ -143,8 +183,11 @@ Useful patterns:
 
 ```
 Use case: identify differences between two responses
+
 - Compare response to authorized vs unauthorized request (access control)
+
 - Compare error vs success response (timing/content differences)
+
 - Compare original vs modified request responses
 
 Method:
@@ -158,14 +201,20 @@ Method:
 
 ```
 Scope management:
+
 - Target → Scope tab → Add in-scope items
+
 - Use regex for flexible scope: https://app\.example\.com/.*
 - All other Burp tools respect scope settings
 
 Site map:
+
 - Builds automatically from proxy traffic
+
 - Right-click host → Spider (crawl all discovered links)
+
 - Filter by status code, MIME type, parameters
+
 - Export for documentation
 ```
 
@@ -258,10 +307,15 @@ docker run -t owasp/zap2docker-stable zap-full-scan.py -t http://target.com
 
 **Key ZAP features:**
 - HUD (Heads Up Display): overlay in browser showing live alerts while browsing
+
 - Active scanner: automatically tests all discovered endpoints
+
 - Fuzzer: similar to Burp Intruder
+
 - Ajax Spider: crawls JavaScript-heavy SPAs (handles dynamic content better than basic spider)
+
 - OpenAPI/Swagger import: import API definition for structured scanning
+
 - Automation Framework: YAML-based automation pipeline integration
 
 ---
@@ -509,13 +563,21 @@ nikto -h http://target.com -useproxy http://127.0.0.1:8080
 
 **What Nikto checks:**
 - Outdated server software versions
+
 - Default files and installation scripts
+
 - CGI vulnerabilities
+
 - SSL/TLS configuration issues
+
 - HTTP methods (PUT, DELETE, TRACE enabled)
+
 - Directory indexing enabled
+
 - Misconfigured robots.txt
+
 - Backup and config files (`.bak`, `.old`, `config.php~`)
+
 - Default credentials on common applications
 
 ---

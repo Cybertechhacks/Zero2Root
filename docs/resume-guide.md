@@ -21,10 +21,15 @@
 
 **What not to include:**
 - Photo (irrelevant in most markets; can introduce bias)
+
 - Date of birth
+
 - Marital status
+
 - "References available on request" (implied)
+
 - Objective statement (replaced by professional summary)
+
 - Every single tool you've ever touched
 
 ---
@@ -141,11 +146,17 @@ Co-Founder & Lead Penetration Tester | Vexonis Technologies | 2023–Present
 Numbers on a security resume are powerful. Think about:
 
 - Number of engagements completed
+
 - Severity of findings (how many Critical/High findings across your career)
+
 - Team size you've worked with or led
+
 - Client size (100-endpoint companies vs 10,000-endpoint enterprises)
+
 - Report delivery time improvements
+
 - Reduction in false positive rate
+
 - Training sessions delivered and attendees
 
 If you don't know exact numbers, use ranges or approximations: "15+ engagements," "100–5000 endpoint environments."
@@ -171,8 +182,11 @@ A technical portfolio separates you from candidates with identical credentials.
 
 **GitHub:**
 - Custom scripts (Python tools for automation, custom Burp extensions)
+
 - Sanitized methodology checklists
+
 - CTF writeups (with permission/after content is public)
+
 - Contributions to open-source security tools
 
 **HackTheBox/TryHackMe profile:** A visible profile with machine completions shows continuous practice. Some employers ask for your HTB username.
@@ -223,10 +237,15 @@ Emphasize: breadth, client communication, report quality, efficiency, and abilit
 Your LinkedIn should mirror your resume but with more space for context.
 
 - **Headline:** Not just your job title. "Penetration Tester | CEH Master | CRTA | Web • Mobile • Infrastructure • AD"
+
 - **About:** 3-4 paragraphs — your technical background, specializations, and what you're building toward
+
 - **Featured:** Link to your blog posts, GitHub, or HTB profile
+
 - **Skills section:** List your top 50 technical skills — these drive recruiter search results
+
 - **Recommendations:** Two or three from colleagues or clients carries significant weight
+
 - **Activity:** Share relevant security news, write short posts about recent CTF findings — builds visibility
 
 **For Vexonis:** Listing yourself as Co-Founder is appropriate and positive on LinkedIn. Keep descriptions focused on deliverables and skills, not company-internal details.

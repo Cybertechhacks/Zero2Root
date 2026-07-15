@@ -117,7 +117,9 @@ Beacon → Redirector (cheap VPS) → Team Server
 
 **HTTP vs HTTPS vs DNS C2:**
 - **HTTPS** blends with normal web traffic. SSL inspection can reveal C2 if not using a trusted cert.
+
 - **DNS C2:** Extremely hard to block — DNS is required for normal operation. Slow (limited bandwidth) but very resilient. Data encoded in DNS queries (subdomains).
+
 - **Domain Fronting:** Use a legitimate CDN (Cloudflare, Azure Front Door) as the apparent destination while routing to your C2. Makes blocking your C2 look like blocking the CDN.
 
 ### Host OPSEC
@@ -198,8 +200,11 @@ less /etc/hosts  # then: !/bin/bash
 How red teams establish the first foothold — mapped to ATT&CK TA0001.
 
 **Phishing (T1566):** Spear-phishing emails with:
+
 - Malicious document attachments (macro-enabled Office docs, PDF with embedded exploit)
+
 - Links to credential harvesting pages (Microsoft 365 lookalikes)
+
 - Links to malware downloads
 
 **Drive-by Compromise (T1189):** Watering hole attacks — compromise a site the target organization's employees visit, serve malicious content.
@@ -273,9 +278,13 @@ Never expose your team server directly. The standard pattern:
 Target Network → Internet → Redirector VPS → Team Server (hidden)
 
 Benefits:
+
 - If blue team blocks the redirector IP, stand up a new one in minutes
+
 - Team server IP never appears in target logs
+
 - Multiple redirectors can be active simultaneously (redundancy)
+
 - Each redirector can serve different profiles for different implants
 
 Redirector configuration (nginx example):
@@ -321,9 +330,13 @@ Domain selection criteria:
    - Not: totally-a-c2-server[.]com
 
 SSL certificates:
+
 - Use Let's Encrypt for free valid certificates (legitimate CA = passes inspection)
+
 - Wildcard cert for *.yourdomain.com covers all subdomains
+
 - Certificate lifetime: Let's Encrypt = 90 days, automate renewal
+
 - Certificate transparency: Your cert will appear in CT logs — use a privacy-aware CA 
   or accept this and include it in OPSEC considerations
 ```
@@ -398,12 +411,16 @@ Detected by SOC: 12 (25%)
 Not detected: 35 (75%)
 
 Detection successes:
+
 - Phishing email blocked by email gateway on first attempt
   (Red team used second lure — success on attempt 2)
+
 - PowerShell download cradle detected within 4 minutes (excellent)
+
 - Mimikatz signature blocked by Defender (red team used alternative tool)
 
 Detection failures (high priority gaps):
+
 - Kerberoasting: 0 of 3 attempts detected
   Recommendation: Alert on Event 4769 with EncryptionType=0x17 (RC4),
   3+ tickets within 5 minutes from single source

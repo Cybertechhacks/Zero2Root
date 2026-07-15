@@ -21,8 +21,11 @@ nmap -sS target          # Requires root/Administrator
 
 **Port state determination:**
 - SYN-ACK received → **open** (port accepting connections)
+
 - RST received → **closed** (port reachable, no service listening)
+
 - No response / ICMP unreachable → **filtered** (firewall dropping packets)
+
 - SYN-ACK then immediate RST from our RST → **open** (we RST'd it)
 
 #### TCP Connect Scan (`-sT`) — No Privileges Required
@@ -424,8 +427,11 @@ python3 -c "import socket; s=socket.socket(); s.connect(('target', 22)); print(s
 
 **Information to extract from banners:**
 - Software and exact version → search CVE databases
+
 - Operating system clues (e.g., SSH banners often include Ubuntu/Debian/CentOS/Red Hat)
+
 - Application server names and versions
+
 - Custom error pages revealing internal hostnames or paths
 
 ---

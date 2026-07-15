@@ -17,14 +17,23 @@ You gather information without directly interacting with the target's systems. A
 
 **Sources:**
 - WHOIS databases
+
 - DNS records (public)
+
 - Search engines (Google, Bing, DuckDuckGo)
+
 - Certificate Transparency logs
+
 - Shodan, Censys, FOFA
+
 - Social media and LinkedIn
+
 - Job postings (reveal technology stack)
+
 - Public code repositories (GitHub, GitLab)
+
 - Web archives (Wayback Machine)
+
 - Google Dorks
 
 ### Active Reconnaissance
@@ -46,9 +55,13 @@ whois 198.51.100.5      # Reverse WHOIS on an IP
 
 **What to look for:**
 - Registrant organization and contact details (useful for spear phishing pretexts)
+
 - Nameservers (identify DNS provider)
+
 - Registration date (new domains may indicate phishing campaigns against your client)
+
 - Expiry date (expiring domains can be snatched for subdomain takeover)
+
 - Registrar abuse contacts (useful if you're on a bug bounty and need to report infra abuse)
 
 **WHOIS privacy protection:** Many registrants use WHOIS privacy services (Domains by Proxy, etc.) that substitute their real contact details with proxy contact details. This limits WHOIS usefulness but is itself useful information — intentional privacy measures suggest security awareness.
@@ -295,10 +308,15 @@ shodan parse results.json.gz
 
 **What to look for on Shodan during recon:**
 - Open RDP (3389), SSH (22), Telnet (23) — remote access services
+
 - Exposed databases (MongoDB 27017, Redis 6379, Elasticsearch 9200, MySQL 3306)
+
 - Default banners revealing software versions → search CVEs
+
 - Admin panels (Tomcat manager, phpmyadmin, Jenkins)
+
 - Unusual ports that shouldn't be internet-facing
+
 - IoT devices (printers, cameras, industrial equipment)
 
 **Censys** is an alternative to Shodan with different coverage and query syntax. Use both for comprehensive coverage.
@@ -380,10 +398,15 @@ gitrob analyze example-corp
 
 **What to look for in repos:**
 - Hardcoded API keys, database credentials, OAuth tokens
+
 - Internal IP addresses or hostnames
+
 - AWS/GCP/Azure credentials (`.env` files, config files)
+
 - Private SSH keys
+
 - JWT secrets
+
 - Database connection strings
 
 Even if developers notice and remove the file, `git log` still contains the history. Secrets in git history require a force-push to purge properly — many teams don't know this.
@@ -413,7 +436,9 @@ theHarvester -d example.com -b google,linkedin,bing
 
 **From email addresses, derive:**
 - Email format (first.last vs flast vs first_last) — use to construct addresses for other employees
+
 - Employee names → spear phishing targets
+
 - Job roles and departments → targeted pretexting scenarios
 
 ---
@@ -449,9 +474,13 @@ Expired job postings (archive.org) can reveal past technology choices and projec
 ## Wayback Machine
 
 The Internet Archive's Wayback Machine (web.archive.org) stores historical snapshots of websites. Useful for:
+
 - Finding old application versions with known vulnerabilities that may still be running internally
+
 - Discovering hidden/removed endpoints that might still exist
+
 - Understanding application structure before a major redesign
+
 - Finding old credentials or configuration data that was later removed
 
 ```bash

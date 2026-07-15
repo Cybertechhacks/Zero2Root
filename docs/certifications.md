@@ -279,10 +279,15 @@ GPEN: $7,000+ (with SANS course) / ~$900 (exam only with self-study)
 ## Certification Maintenance
 
 Most certifications require renewal:
+
 - CompTIA: Every 3 years via CPE credits or re-exam
+
 - CEH: Every 3 years, 120 CPE credits required
+
 - OSCP: Lifetime once earned (no renewal)
+
 - GIAC: Every 4 years, 36 CPE credits
+
 - CISSP: Every 3 years, 120 CPE credits
 
 Maintain a CPE log. Blog posts, conference presentations, training courses, CTF participation all typically count.

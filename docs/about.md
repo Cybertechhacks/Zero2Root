@@ -5,14 +5,19 @@ Zero2Root is built and maintained by **Vinod Kumar Bontha**, a Security Analyst,
 ## Background
 
 ### 🎓 Certifications
+
 - CEH (Master), CRTA, CNSP certified
 
 ### 🐛 Bug Bounty & Vulnerability Disclosures
+
 - **ClearTax:** Inducted into the Hall of Fame and awarded a financial bounty for the responsible disclosure of a Critical (P1) vulnerability.
+
 - **Max Healthcare:** Received a Certificate of Appreciation from the CISO & DPO for securing a Critical (P1) infrastructure flaw.
 
 ### 🛠️ Open-Source Security Tools
+
 - **[JSSecretHunter](https://github.com/Cybertechhacks/JSSecretHunter):** A high-precision, multi-layer secret discovery engine for advanced JavaScript analysis.
+
 - **[SecretPulse](https://github.com/Cybertechhacks/SecretPulse):** Custom Python tooling designed for automated secret discovery during reconnaissance.
 
 
@@ -23,4 +28,5 @@ This started as a personal study reference while working through the path from f
 ## Connect
 
 - LinkedIn: [linkedin.com/in/vinodkr000](https://linkedin.com/in/vinodkr000)
+
 - GitHub: [github.com/Cybertechhacks](https://github.com/Cybertechhacks)

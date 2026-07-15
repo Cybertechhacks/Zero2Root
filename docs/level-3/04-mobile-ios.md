@@ -16,9 +16,13 @@
 **App Sandbox:** Each app runs in an isolated container. Cannot directly access other apps' files or system resources without explicit entitlements. Similar concept to Android's UID-based sandbox but enforced by mandatory access control (MAC) via TrustedBSD.
 
 **Data Protection Classes:** Files can be assigned protection classes that determine when they're decryptable:
+
 - `NSFileProtectionComplete` — encrypted when device locked
+
 - `NSFileProtectionCompleteUnlessOpen` — decryptable if file was open when locked
+
 - `NSFileProtectionCompleteUntilFirstUserAuthentication` — protected until first unlock after boot (default)
+
 - `NSFileProtectionNone` — always accessible
 
 **Keychain:** Secure storage for credentials, certificates, and keys. Items can be restricted by device state (requires unlock, biometric, etc.) and by app entitlements.
@@ -85,6 +89,7 @@ grep -i "password\|token\|key\|credential" App_headers.h
 ### Setup Requirements
 
 - **Jailbroken device** (Checkra1n, Palera1n, Unc0ver) or
+
 - **Non-jailbroken + Frida gadget** (embed Frida into the IPA and resign)
 
 ```bash
@@ -340,10 +345,15 @@ Too broad: "Test everything at example.com"
 → Does it include acquisitions under different domains?
 
 Correct: "Test the following production web applications and their APIs:
+
 - https://app.example.com (web + API)
+
 - https://admin.example.com (admin panel)
+
 - Subdomains enumerated during testing are in scope
+
 - Third-party services (Salesforce, Stripe) are NOT in scope
+
 - Production database servers are NOT to be exploited (identify vulns only)"
 ```
 
@@ -371,10 +381,15 @@ Correct: "Test the following production web applications and their APIs:
 ### When to Stop Testing
 
 Stop immediately and escalate to the emergency contact if:
+
 - You discover evidence of an active attacker in the environment (not you)
+
 - You accidentally take down a production service
+
 - You find evidence of serious crimes (CSAM, financial fraud)
+
 - You gain access to systems clearly out of scope
+
 - You discover data that appears to be a current data breach in progress
 
 Document the time and nature of the discovery before making the call.

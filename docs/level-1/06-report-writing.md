@@ -10,16 +10,25 @@
 Every pentest report is read by two completely different audiences:
 
 **Technical audience:** System administrators, developers, security engineers. They need:
+
 - Exact reproduction steps
+
 - Code snippets, HTTP requests/responses
+
 - Affected system hostnames and IPs
+
 - Specific CVE references
+
 - Technical remediation steps
 
 **Executive audience:** CISO, CTO, CFO, Board. They need:
+
 - Business risk in plain language
+
 - Financial/regulatory/reputational impact
+
 - Strategic priority ranking
+
 - Resource implications of remediation
 
 The mistake most junior pentesters make is writing the entire report in technical language. An executive should be able to read the first 2-3 pages and understand: how bad is it, what could happen if we don't fix it, and what's the priority order.
@@ -29,12 +38,19 @@ The mistake most junior pentesters make is writing the entire report in technica
 ## Report Structure
 
 ### 1. Cover Page
+
 - Report title and type (Internal Penetration Test, External VA, Web Application Assessment, etc.)
+
 - Client organization name
+
 - Date range of testing
+
 - Date of report
+
 - Report version
+
 - Prepared by (your firm name)
+
 - Confidentiality notice
 
 ### 2. Table of Contents
@@ -45,9 +61,13 @@ The most important section. Written last, but placed first. Must stand alone —
 
 **Contents:**
 - **Engagement overview:** What was tested, when, at what level of access
+
 - **Overall risk posture:** One sentence characterizing the severity of what was found. "The assessment identified critical vulnerabilities that would allow an unauthenticated remote attacker to fully compromise the internal network."
+
 - **Key findings summary:** Top 3-5 findings by business impact (not CVSS). Describe in business terms — not "SQL injection in the login form" but "an attacker without any account could bypass the login system and access all customer data."
+
 - **Risk distribution chart:** Bar or pie chart showing finding count by severity (Critical/High/Medium/Low/Informational)
+
 - **Strategic recommendations:** What the organization needs to do in priority order — not specific technical fixes but strategic direction
 
 **Executive Summary Language Guide:**
@@ -62,11 +82,17 @@ The most important section. Written last, but placed first. Must stand alone —
 | Missing patch | The server software hasn't been updated and contains a known flaw |
 
 ### 4. Scope and Methodology
+
 - IP ranges, domains, applications in scope
+
 - Testing dates and hours
+
 - Testing type (black/white/grey box)
+
 - Methodology framework referenced (PTES, OWASP, custom)
+
 - Tools used (high level — Nmap, Nessus, Burp Suite, custom scripts)
+
 - Limitations (e.g., testing was unauthenticated; some services were unavailable during testing window)
 
 ### 5. Findings (bulk of the report)
@@ -82,15 +108,23 @@ A table summarizing all findings with severity, affected system, and brief descr
 ### 7. Remediation Roadmap
 
 Prioritized action plan:
+
 - **Immediate (0-7 days):** Critical findings
+
 - **Short term (7-30 days):** High findings
+
 - **Medium term (30-90 days):** Medium findings
+
 - **Long term (90+ days / next development cycle):** Low findings
 
 ### 8. Appendices
+
 - Raw tool output (Nmap scans, Nessus XML export)
+
 - Additional screenshots
+
 - Code snippets too long for the main body
+
 - Glossary (if client is non-technical)
 
 ---
@@ -101,9 +135,13 @@ Each finding should have these sections:
 
 ### Finding Title
 Short, clear, describes the vulnerability type and context:
+
 - ✅ "Unauthenticated SQL Injection in Customer Login Portal"
+
 - ✅ "Remote Code Execution via Outdated Apache Struts (CVE-2017-5638)"
+
 - ❌ "SQL Injection Found"
+
 - ❌ "Server is Vulnerable"
 
 ### Severity Rating
@@ -135,6 +173,7 @@ Base Score: 9.4 (Critical)
 List every affected host, URL, or component:
 ```
 - 192.168.1.50 (webserver01.corp.local)
+
 - https://customer-portal.example.com/login
 ```
 
@@ -177,7 +216,9 @@ Screenshots, HTTP requests/responses, tool output, extracted data samples. For s
 
 **Screenshot format:**
 - Caption every screenshot: "Figure 1: SQL injection response showing extracted password hashes"
+
 - Highlight the relevant portion if the screenshot is large
+
 - Include the URL/context in the screenshot (not just isolated data)
 
 ### Business Impact
@@ -217,8 +258,11 @@ Specific, actionable, technology-appropriate remediation steps:
 ### References
 
 - CVE number if applicable: CVE-2021-XXXXX
+
 - OWASP category: OWASP Top 10 A03:2021 – Injection
+
 - Vendor advisory: link
+
 - CWE: CWE-89 (SQL Injection)
 
 ---
@@ -239,24 +283,31 @@ Every finding needs a justified CVSS vector. Common mistakes:
 
 **Use active voice:**
 - ❌ "SQL injection was identified in the login form"
+
 - ✅ "An attacker can exploit SQL injection in the login form to extract all customer data"
 
 **Use impact-first language:**
 - ❌ "The application does not implement rate limiting on login attempts"
+
 - ✅ "Without rate limiting on the login form, an attacker can attempt unlimited password guesses against any account, enabling automated credential brute force"
 
 **Quantify when possible:**
 - ❌ "Several users are affected"
+
 - ✅ "All 47,000 registered users are affected"
 
 **Be precise about scope:**
 - ❌ "The system is vulnerable"
+
 - ✅ "`/api/v2/profile` on app.example.com is vulnerable"
 
 **Match technical depth to the section:**
 - Executive summary: business language
+
 - Finding description: accessible technical language
+
 - Steps to reproduce: full technical detail
+
 - Remediation: specific code examples where appropriate
 
 ---
@@ -339,6 +390,7 @@ cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
 **References**
 
 - OWASP Top 10 2021: A03 – Injection
+
 - OWASP SQL Injection Prevention Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
 
 ---

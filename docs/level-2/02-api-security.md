@@ -12,8 +12,11 @@
 Stateless, uses HTTP methods semantically (GET, POST, PUT, PATCH, DELETE), resources identified by URLs, responses in JSON (usually). Most common API type in modern applications.
 
 Key testing considerations:
+
 - HTTP method access control: does DELETE work when only GET should?
+
 - Authorization per resource, per method: user can GET but not DELETE own resources, but can they DELETE another user's resource?
+
 - Parameter types: query strings, URL path params, request body, headers — test all
 
 ### GraphQL

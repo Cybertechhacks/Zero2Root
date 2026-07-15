@@ -11,10 +11,15 @@ Segmentation testing validates that network zones are properly isolated — that
 
 **Common segmentation requirements:**
 - **PCI-DSS:** The cardholder data environment (CDE) must be isolated from all other networks. Scope creep in PCI is a critical finding.
+
 - **OT/ICS/SCADA:** Industrial control systems must be isolated from IT networks.
+
 - **Management network:** Out-of-band management (IPMI, iDRAC, switch management) must be isolated.
+
 - **DMZ:** Internet-facing systems in DMZ must not directly reach internal LAN.
+
 - **Guest WiFi:** Guest network must not reach corporate network.
+
 - **Development:** Dev/test environments isolated from production.
 
 ---
@@ -24,8 +29,11 @@ Segmentation testing validates that network zones are properly isolated — that
 ### Pre-Test: Understand the Intended Design
 
 Before testing, obtain:
+
 - Network topology diagram
+
 - Intended segmentation design (which zones exist, what's allowed between them)
+
 - Firewall ruleset (if available — config review plus segmentation testing is more thorough)
 
 Without the design document, you're testing blindly and can't verify what *should* be blocked.
