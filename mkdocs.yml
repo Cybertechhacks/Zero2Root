@@ -83,10 +83,10 @@ copyright: >
   Built and maintained by Vinod Kumar Bontha · CEH (Master) | CRTA | CNSP · <a href="https://linkedin.com/in/vinodkr000" target="_blank" rel="noopener">LinkedIn</a>
 
 nav:
-  - Home: index.md
-  - About: about.md
+  - 🏠 Home: index.md
+  - 👤 About: about.md
 
-  - Level 0 — Foundations:
+  - 🌱 Level 0 — Foundations:
     - Overview: level-0/index.md
     - Networking Fundamentals: level-0/01-networking.md
     - OS Fundamentals: level-0/02-os-fundamentals.md
@@ -94,7 +94,7 @@ nav:
     - Introduction to Pentesting: level-0/04-intro-pentesting.md
     - Interview Q&A — Fresher: level-0/05-interview-qa.md
 
-  - Level 1 — Junior Pentester:
+  - 🛡️ Level 1 — Junior Pentester:
     - Overview: level-1/index.md
     - Reconnaissance: level-1/01-reconnaissance.md
     - Scanning & Enumeration: level-1/02-scanning-enumeration.md
@@ -104,7 +104,7 @@ nav:
     - Report Writing: level-1/06-report-writing.md
     - Interview Q&A — Junior: level-1/07-interview-qa.md
 
-  - Level 2 — Mid-Level Pentester:
+  - ⚔️ Level 2 — Mid-Level Pentester:
     - Overview: level-2/index.md
     - Web Application — Advanced: level-2/01-web-advanced.md
     - API Security: level-2/02-api-security.md
@@ -116,7 +116,7 @@ nav:
     - Segmentation Testing: level-2/08-segmentation-testing.md
     - Interview Q&A — Mid-Level: level-2/09-interview-qa.md
 
-  - Level 3 — Senior Pentester:
+  - 🔥 Level 3 — Senior Pentester:
     - Overview: level-3/index.md
     - Active Directory — Advanced: level-3/01-ad-advanced.md
     - Red Team Concepts: level-3/02-red-team.md
@@ -126,7 +126,7 @@ nav:
     - Engagement Management: level-3/06-engagement-management.md
     - Interview Q&A — Senior: level-3/07-interview-qa.md
 
-  - Level 4 — Lead / Architect:
+  - 👑 Level 4 — Lead / Architect:
     - Overview: level-4/index.md
     - Red Team Program Design: level-4/01-red-team-program.md
     - Threat Modeling: level-4/02-threat-modeling.md
@@ -135,7 +135,7 @@ nav:
     - Business Development: level-4/05-business-development.md
     - Interview Q&A — Lead: level-4/06-interview-qa.md
 
-  - Tools Reference:
+  - 🧰 Tools Reference:
     - Overview: tools/index.md
     - Recon Tools: tools/01-recon-tools.md
     - Scanning Tools: tools/02-scanning-tools.md
@@ -143,7 +143,7 @@ nav:
     - Network & Infra Tools: tools/04-network-tools.md
     - Mobile Tools: tools/05-mobile-tools.md
 
-  - Resources:
+  - 📚 Resources:
     - Overview: resources/index.md
     - Certifications Roadmap: certifications.md
     - Behavioral Interview: behavioral.md
